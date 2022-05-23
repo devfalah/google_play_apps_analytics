@@ -1,8 +1,8 @@
 
 
 fun main() {
-    val dataParser=DataParser()
-    val googlePlayApps=dataParser.getGooglePlayAppsFromCsv()
+
+    val googlePlayApps=DataParser().getGooglePlayAppsFromCsv()
     googlePlayApps.forEach{ println(it.name) }
 
 }
