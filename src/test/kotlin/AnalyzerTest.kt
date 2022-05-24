@@ -1,8 +1,8 @@
 import org.junit.jupiter.api.Test
 
-import org.junit.jupiter.api.Assertions.*
 
 internal class AnalyzerTest {
+    val fakeApps=FakeData().fakeApps
 
     @Test
     fun calculateCountAppsDevelopedByGoogle() {
