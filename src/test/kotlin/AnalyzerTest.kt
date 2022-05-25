@@ -1,30 +1,18 @@
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
+import kotlin.test.assertEquals
 
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class AnalyzerTest {
     val fakeApps=FakeData().fakeApps
+    private lateinit var analyzer :Analyzer
 
-    @Test
-    fun calculateCountAppsDevelopedByGoogle() {
+    @BeforeAll
+    fun setup(){
+        this.analyzer =Analyzer()
     }
 
-    @Test
-    fun calculatePercentageOfMedicalApps() {
-    }
 
-    @Test
-    fun getOldestApp() {
-    }
-
-    @Test
-    fun calculatePercentageOfAppsRunningOnAndroid9AndUpOnly() {
-    }
-
-    @Test
-    fun getLargest10Apps() {
-    }
-
-    @Test
-    fun getTop10InstalledApps() {
-    }
 }
