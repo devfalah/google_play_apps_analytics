@@ -5,12 +5,15 @@
 class Helper {
 
     public fun convertSize(size: String): Double {
-        if (size.contains("M")){
-            return size.replace("M","").toDouble()
+        val appSize = size.uppercase()
+        if (appSize.contains("M")){
+            return appSize.replace("M","").toDouble()
         }
-        else if(size.contains("G")){
-            val sizeInGB = size.replace("G", "").toDouble()
+        else if(appSize.contains("G")){
+            val sizeInGB = appSize.replace("G", "").toDouble()
             return sizeInGB * 1024
+        } else if(appSize.contains("K")){
+            return appSize.replace("K", "").toDouble() / 1024
         }
        return 0.0
     }
