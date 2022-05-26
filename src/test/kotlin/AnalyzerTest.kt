@@ -180,6 +180,8 @@ internal class AnalyzerTest {
     fun shoud_ReturnPercentageOfMedicalAppsValue_when_MedicalHaveSpace() {
         //give  category have space
         fakeApps[1].category = "  Medical "
+       // fakeApps[1].category = "Medical "
+       // fakeApps[1].category = " Medical"
         //when calculate the percentage of Medical Apps
         val percentage = analyzer.calculatePercentageOfMedicalApps(fakeApps)
         //then check the result
@@ -205,7 +207,6 @@ internal class AnalyzerTest {
          assertEquals(null, percentage)
         //assertNull(percentage)
     }
-
     //   Test Cases End
     //=========================================
 }
