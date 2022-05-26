@@ -8,7 +8,7 @@ class Analyzer {
     fun  calculatePercentageOfMedicalApps(apps:List<App>):Double{
         TODO("not implemented")
     }
-    fun  getOldestApp(apps:List<App>):App{
+    fun  getOldestApp(apps:List<App>):App?{
         TODO("not implemented")
     }
     fun  calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(apps:List<App>):Double{
