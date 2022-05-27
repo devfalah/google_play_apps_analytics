@@ -1,3 +1,8 @@
+
+
 fun main() {
-println("Falah")
+
+    val googlePlayApps=DataParser().getGooglePlayAppsFromCsv()
+
+
 }
