@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-25T12:46:37" hostname="DESKTOP-H7H5K9J" time="0.023">
+<testsuite name="AnalyzerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-05-27T13:55:50" hostname="DESKTOP-94UM93B" time="0.071">
   <properties/>
-  <testcase name="test()" classname="AnalyzerTest" time="0.023"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="should_returnCorrectValue_When_GiveCorrect()" classname="AnalyzerTest" time="0.063"/>
+  <testcase name="should_returnNull_When_TheListLessThan10()" classname="AnalyzerTest" time="0.003"/>
+  <testcase name="should_returnNull_When_GiveNegativeValue()" classname="AnalyzerTest" time="0.001"/>
+  <testcase name="should_returnEmpty_When_EmptyList()" classname="AnalyzerTest" time="0.001"/>
+  <system-out><![CDATA[App 7
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
