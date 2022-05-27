@@ -1,8 +1,7 @@
-
+import models.App
 
 fun main() {
 
-    val googlePlayApps=DataParser().getGooglePlayAppsFromCsv()
-
+  val googlePlayApps=DataParser().getGooglePlayAppsFromCsv()
 
 }

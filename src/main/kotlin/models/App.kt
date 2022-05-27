@@ -8,5 +8,5 @@ class App(
     val size:String,
     val installsCount:Long,
     val currentVersion:String,
-    val requiresAndroid:String,
+    var requiresAndroid:String,
 )
