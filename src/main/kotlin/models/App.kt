@@ -1,6 +1,6 @@
 package models
 
-class App(
+data class App(
     val name:String,
     val company:String,
     val category: String,
@@ -9,4 +9,9 @@ class App(
     val installsCount:Long,
     val currentVersion:String,
     val requiresAndroid:String,
-)
+){
+    override fun equals(other: Any?): Boolean {
+        return size.uppercase() == (other as App).size.uppercase()
+    }
+}
+
