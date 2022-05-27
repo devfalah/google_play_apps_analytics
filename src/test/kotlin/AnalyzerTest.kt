@@ -22,7 +22,7 @@ internal class AnalyzerTest {
         // given list of apps
         val apps = fakeApps
         // when sort apps descending
-        val sortedApps = analyzer.getLargest10Apps(apps).take(1);
+        val sortedApps = analyzer.getLargest10Apps(fakeApps).take(2)
         val exceptedApps = listOf<App>(
             App(
                 name = "App 5",
@@ -47,6 +47,116 @@ internal class AnalyzerTest {
 
                 ))
         // then
+        assertEquals(exceptedApps, sortedApps)
+    }
+
+    @Test
+    fun shouldReturn_Correct10LargestApp_WhenHaveSizeSymbolINAnyLetterCases () {
+        // given list of apps
+        val apps = listOf<App>(
+            App(
+                name = "App 5",
+                company = "Weedmaps",
+                category = "Medical",
+                updatedAt = "March 4 2022",
+                size = "1.1g",
+                installsCount = 1800000,
+                currentVersion = "7.0.2",
+                requiresAndroid = "5.0 and up",
+
+                ),
+            App(
+                name = "App 18",
+                company = "Game Insight",
+                category = "Action",
+                updatedAt = "May 12 2022",
+                size = "7.1g",
+                installsCount = 50000000,
+                currentVersion = "30.0.271",
+                requiresAndroid = "5.0 and up",
+
+                ))
+        // when sort apps descending
+        val sortedApps = analyzer.getLargest10Apps(apps).take(2);
+        val exceptedApps = listOf<App>(
+            App(
+                name = "App 18",
+                company = "Game Insight",
+                category = "Action",
+                updatedAt = "May 12 2022",
+                size = "7.1g",
+                installsCount = 50000000,
+                currentVersion = "30.0.271",
+                requiresAndroid = "5.0 and up",
+
+                ),
+            App(
+                name = "App 5",
+                company = "Weedmaps",
+                category = "Medical",
+                updatedAt = "March 4 2022",
+                size = "1.1g",
+                installsCount = 1800000,
+                currentVersion = "7.0.2",
+                requiresAndroid = "5.0 and up",
+
+                ))
+        // then
+        assertEquals(exceptedApps, sortedApps)
+    }
+
+    @Test
+    fun shouldReturn_Correct10LargestApp_WhenSizeWithoutNumericValue() {
+        // given list of apps
+        val apps = listOf<App>(
+            App(
+                name = "App 5",
+                company = "Weedmaps",
+                category = "Medical",
+                updatedAt = "March 4 2022",
+                size = "Varies with device",
+                installsCount = 1800000,
+                currentVersion = "7.0.2",
+                requiresAndroid = "5.0 and up",
+
+                ),
+            App(
+                name = "App 18",
+                company = "Game Insight",
+                category = "Action",
+                updatedAt = "May 12 2022",
+                size = "1.1g",
+                installsCount = 50000000,
+                currentVersion = "30.0.271",
+                requiresAndroid = "5.0 and up",
+
+                ))
+        // when sort apps descending
+        val sortedApps = analyzer.getLargest10Apps(apps).take(2);
+        val exceptedApps = listOf<App>(
+            App(
+                name = "App 5",
+                company = "Weedmaps",
+                category = "Medical",
+                updatedAt = "March 4 2022",
+                size = "1.1g",
+                installsCount = 1800000,
+                currentVersion = "7.0.2",
+                requiresAndroid = "5.0 and up",
+
+                ),
+            App(
+                name = "App 18",
+                company = "Game Insight",
+                category = "Action",
+                updatedAt = "May 12 2022",
+                size = "Varies with device",
+                installsCount = 50000000,
+                currentVersion = "30.0.271",
+                requiresAndroid = "5.0 and up",
+
+                ))
+        // then
         assertEquals(exceptedApps.first().size, sortedApps.first().size)
     }
 
@@ -59,6 +169,8 @@ internal class AnalyzerTest {
         // then return empty list
         assertEquals(emptyList<App>(), resultApps)
     }
+
+
 
 
 }
