@@ -3,17 +3,20 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import kotlin.test.assertEquals
-import org.junit.jupiter.api.Assertions.assertArrayEquals
-import kotlin.test.assertContains
+
+
+
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class AnalyzerTest {
-    val fakeApps=FakeData().fakeApps
-    private lateinit var analyzer :Analyzer
+    private val fakeApps = FakeData().fakeApps
+    private lateinit var analyzer: Analyzer
+
+
 
     @BeforeAll
-    fun setup(){
-        this.analyzer =Analyzer()
+    fun setup() {
+        this.analyzer = Analyzer()
     }
 
     // Test Cases for : ((getOldestApp method))
@@ -29,7 +32,7 @@ internal class AnalyzerTest {
     @Test
     fun should_ReturnNull_When_DateFormatHasNoSpace(){
         // given list of apps
-        var newFakeApps = fakeApps.toMutableList()
+        val newFakeApps = fakeApps.toMutableList()
         newFakeApps[4].updatedAt = "May152020"
         // when finding the oldest app
         val oldestApp = analyzer.getOldestApp(newFakeApps)
@@ -40,7 +43,7 @@ internal class AnalyzerTest {
     @Test
     fun should_ReturnNull_When_DateFormatHasOneLeftSpace(){
         // given list of apps
-        var newFakeApps = fakeApps.toMutableList()
+        val newFakeApps = fakeApps.toMutableList()
         newFakeApps[4].updatedAt = "May 152020"
         // when finding the oldest app
         val oldestApp = analyzer.getOldestApp(newFakeApps)
@@ -51,7 +54,7 @@ internal class AnalyzerTest {
     @Test
     fun should_ReturnNull_When_DateFormatHasOneRightSpace(){
         // given list of apps
-        var newFakeApps = fakeApps.toMutableList()
+        val newFakeApps = fakeApps.toMutableList()
         newFakeApps[2].updatedAt = "March18 2022"
         // when finding the oldest app
         val oldestApp = analyzer.getOldestApp(newFakeApps)
@@ -60,9 +63,9 @@ internal class AnalyzerTest {
     }
 
     @Test
-    fun should_ReturnNull_When_MonthIsAnumber(){
+    fun should_ReturnNull_When_MonthIsANumber(){
         // given list of apps
-        var newFakeApps = fakeApps.toMutableList()
+        val newFakeApps = fakeApps.toMutableList()
         newFakeApps[2].updatedAt = "6 10 2022"
         // when finding the oldest app
         val oldestApp = analyzer.getOldestApp(newFakeApps)
@@ -73,7 +76,7 @@ internal class AnalyzerTest {
     @Test
     fun should_ReturnNull_When_MonthNotCapitalized(){
         // given list of apps
-        var newFakeApps = fakeApps.toMutableList()
+        val newFakeApps = fakeApps.toMutableList()
         newFakeApps[5].updatedAt = "march 19 2021"
         // when finding the oldest app
         val oldestApp = analyzer.getOldestApp(newFakeApps)
@@ -84,7 +87,7 @@ internal class AnalyzerTest {
     @Test
     fun should_ReturnNull_When_MonthMisspelled(){
         // given list of apps
-        var newFakeApps = fakeApps.toMutableList()
+        val newFakeApps = fakeApps.toMutableList()
         newFakeApps[1].updatedAt = "Arpil 10 2022"
         // when finding the oldest app
         val oldestApp = analyzer.getOldestApp(newFakeApps)
@@ -95,7 +98,7 @@ internal class AnalyzerTest {
     @Test
     fun should_ReturnNull_When_DayIsLessThan_1(){
         // given list of apps
-        var newFakeApps = fakeApps.toMutableList()
+        val newFakeApps = fakeApps.toMutableList()
         newFakeApps[1].updatedAt = "June 0 2022"
         // when finding the oldest app
         val oldestApp = analyzer.getOldestApp(newFakeApps)
@@ -106,7 +109,7 @@ internal class AnalyzerTest {
     @Test
     fun should_ReturnNull_When_DayIsGreaterThan_31(){
         // given list of apps
-        var newFakeApps = fakeApps.toMutableList()
+        val newFakeApps = fakeApps.toMutableList()
         newFakeApps[6].updatedAt = "Arpil 35 2022"
         // when finding the oldest app
         val oldestApp = analyzer.getOldestApp(newFakeApps)
@@ -117,7 +120,7 @@ internal class AnalyzerTest {
     @Test
     fun should_ReturnNull_When_YearLessThan2008(){
         // given list of apps
-        var newFakeApps = fakeApps.toMutableList()
+        val newFakeApps = fakeApps.toMutableList()
         newFakeApps[7].updatedAt = "Arpil 10 2006"
         // when finding the oldest app
         val oldestApp = analyzer.getOldestApp(newFakeApps)
@@ -128,7 +131,7 @@ internal class AnalyzerTest {
     @Test
     fun should_ReturnNull_When_DateFormatIsReversed(){
         // given list of apps
-        var newFakeApps = fakeApps.toMutableList()
+        val newFakeApps = fakeApps.toMutableList()
         newFakeApps[7].updatedAt = "2020 10 Arpil"
         // when finding the oldest app
         val oldestApp = analyzer.getOldestApp(newFakeApps)
@@ -139,7 +142,7 @@ internal class AnalyzerTest {
     @Test
     fun should_ReturnNull_When_MonthReversedWithDay(){
         // given list of apps
-        var newFakeApps = fakeApps.toMutableList()
+        val newFakeApps = fakeApps.toMutableList()
         newFakeApps[7].updatedAt = "10 Arpil 2020"
         // when finding the oldest app
         val oldestApp = analyzer.getOldestApp(newFakeApps)
@@ -152,8 +155,8 @@ internal class AnalyzerTest {
         // given list of apps
         val apps = fakeApps
         // when sort apps descending
-        val sortedApps = analyzer.getLargest10Apps(fakeApps).take(2)
-        val exceptedApps = listOf<App>(
+        val sortedApps = analyzer.getLargest10Apps(apps).take(2)
+        val exceptedApps = listOf(
            fakeApps[4],
            fakeApps[17]
         )
@@ -164,7 +167,7 @@ internal class AnalyzerTest {
     @Test
     fun shouldReturn_Correct10LargestApp_WhenHaveSizeSymbolINAnyLetterCases () {
         // given list of apps
-        val apps = listOf<App>(
+        val apps = listOf(
             App(
                 name = "App 5",
                 company = "Weedmaps",
@@ -188,8 +191,8 @@ internal class AnalyzerTest {
 
                 ))
         // when sort apps descending
-        val sortedApps = analyzer.getLargest10Apps(apps).take(2);
-        val exceptedApps = listOf<App>(
+        val sortedApps = analyzer.getLargest10Apps(apps).take(2)
+        val exceptedApps = listOf(
             fakeApps[17],
             fakeApps[4])
         // then
@@ -199,7 +202,7 @@ internal class AnalyzerTest {
     @Test
     fun shouldReturn_Correct10LargestApp_WhenSizeWithoutNumericValue() {
         // given list of apps
-        val apps = listOf<App>(
+        val apps = listOf(
            App( name = "App 16",
             company = "Craigpark Limited",
             category = "Productivity",
@@ -220,8 +223,8 @@ internal class AnalyzerTest {
 
                 ))
         // when sort apps descending
-        val sortedApps = analyzer.getLargest10Apps(apps).take(2);
-        val exceptedApps = listOf<App>(
+        val sortedApps = analyzer.getLargest10Apps(apps).take(2)
+        val exceptedApps = listOf(
             fakeApps[4],
             fakeApps[15])
         // then
@@ -233,10 +236,98 @@ internal class AnalyzerTest {
         // given empty list
         val apps = listOf<App>()
         // when sort apps descending
-        val resultApps = analyzer.getLargest10Apps(apps);
+        val resultApps = analyzer.getLargest10Apps(apps)
         // then return empty list
-        assertEquals(emptyList<App>(), resultApps)
+        assertEquals(emptyList(), resultApps)
     }
+
+
+
+
+    @Test
+    fun should_returnCorrectValue_When_GiveCorrect() {
+        //give
+        val apps = fakeApps
+        //when
+        val result = analyzer.getTop10InstalledApps(apps).take(10)
+        println(result[0].name)
+        val exceptedAPPS = listOf(
+            fakeApps[6],
+            fakeApps[16],
+            fakeApps[17],
+            fakeApps[10],
+            fakeApps[5],
+            fakeApps[8],
+            fakeApps[18],
+            fakeApps[4],
+            fakeApps[9],
+            fakeApps[11]
+
+        )
+        //then
+        assertEquals(exceptedAPPS, result)
+
+    }
+
+    @Test
+    fun should_returnEmpty_When_EmptyList() {
+        //give
+        val apps = listOf<App>()
+        //when
+        val result = analyzer.getTop10InstalledApps(apps)
+        //then
+        assertEquals(emptyList(), result)
+
+    }
+
+    @Test
+    fun should_returnNull_When_TheListLessThan10() {
+        //give
+        val apps = listOf(App(
+            name = "App 19",
+            company = "TIMEFLIK (ex MR TIME)",
+            category = "Personalization",
+            updatedAt = "December 15 2021",
+            size = "4.7M",
+            installsCount = 5000000,
+            currentVersion = "10, 1.0.0",
+            requiresAndroid = "9 and up",
+
+            ))
+        //when
+        val result = analyzer.getTop10InstalledApps(apps).take(10)
+
+        //then
+        assertEquals(emptyList(), result)
+
+
+    }
+    @Test
+    fun should_returnNull_When_GiveNegativeValue() {
+        //give
+        val apps = listOf(App(
+            name = "App 19",
+            company = "TIMEFLIK (ex MR TIME)",
+            category = "Personalization",
+            updatedAt = "December 15 2021",
+            size = "4.7M",
+            installsCount = -5000000,
+            currentVersion = "10, 1.0.0",
+            requiresAndroid = "9 and up",
+
+            ))
+        //when
+        val result = analyzer.getTop10InstalledApps(apps).take(10)
+
+        //then
+        assertEquals(emptyList(), result)
+
+    }
+
+
+
+
+
 
 
 

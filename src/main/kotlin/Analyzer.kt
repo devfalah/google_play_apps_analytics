@@ -21,7 +21,15 @@ class Analyzer {
         }
         return apps.sortedByDescending { helper.convertSize(it.size) }.take(10)
     }
-    fun  getTop10InstalledApps(apps:List<App>):List<App>{
-        TODO("not implemented")
+    fun  getTop10InstalledApps(apps: List<App>):List<App>{
+        if (apps.isEmpty()||apps.size<10){
+            return emptyList<App>()
+        }
+
+        if(apps.all { it.installsCount < 0 })  {
+            return emptyList()
+        }
+        return apps.sortedByDescending { it.installsCount}.take(10)
+
     }
 }
