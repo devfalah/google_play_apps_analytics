@@ -152,47 +152,59 @@ internal class AnalyzerTest {
     @Test
     fun shoud_ReturnPercentageOfMedicalAppsValue_when_ListOfAppsIsCorrect() {
         //give correct list
-
+        var categorySearchName = "medical"
         //when calculate the percentage of Medical Apps
-        val percentage = analyzer.calculatePercentageOfMedicalApps(fakeApps)
+        val percentage = analyzer.calculatePercentageOfMedicalApps(fakeApps ,categorySearchName)
         //then check the result
          assertEquals(25.0, percentage)
     }
     @Test
-    fun shoud_ReturnPercentageOfMedicalAppsValue_when_MedicalIsLowercase() {
+    fun shoud_ReturnPercentageOfMedicalAppsValue_when_CategoryIsLowercase() {
         //give category lowercase
         fakeApps[1].category = "medical"
+        var categorySearchName = "medical"
         //when calculate the percentage of Medical Apps
-        val percentage = analyzer.calculatePercentageOfMedicalApps(fakeApps)
+        val percentage = analyzer.calculatePercentageOfMedicalApps(fakeApps ,categorySearchName)
         //then check the result
         assertEquals(25.0, percentage)
     }
     @Test
-    fun shoud_ReturnPercentageOfMedicalAppsValue_when_MedicalIsUpercase() {
+    fun shoud_ReturnPercentageOfMedicalAppsValue_when_CategoryHaveMultipleWord() {
+        //give category lowercase
+        fakeApps[1].category = "Medical & TheChance"
+        var categorySearchName = "medical"
+        //when calculate the percentage of Medical Apps
+        val percentage = analyzer.calculatePercentageOfMedicalApps(fakeApps ,categorySearchName)
+        //then check the result
+        assertEquals(25.0, percentage)
+    }
+    @Test
+    fun shoud_ReturnPercentageOfMedicalAppsValue_when_CategoryIsUpercase() {
         //give category upercase
         fakeApps[1].category = "MEDICAL"
+        var categorySearchName = "medical"
         //when calculate the percentage of Medical Apps
-        val percentage = analyzer.calculatePercentageOfMedicalApps(fakeApps)
+        val percentage = analyzer.calculatePercentageOfMedicalApps(fakeApps ,categorySearchName)
         //then check the result
         assertEquals(25.0, percentage)
     }
     @Test
-    fun shoud_ReturnPercentageOfMedicalAppsValue_when_MedicalHaveSpace() {
+    fun shoud_ReturnPercentageOfMedicalAppsValue_when_CategoryHaveSpace() {
         //give  category have space
         fakeApps[1].category = "  Medical "
-       // fakeApps[1].category = "Medical "
-       // fakeApps[1].category = " Medical"
+        var categorySearchName = "medical"
         //when calculate the percentage of Medical Apps
-        val percentage = analyzer.calculatePercentageOfMedicalApps(fakeApps)
+        val percentage = analyzer.calculatePercentageOfMedicalApps(fakeApps ,categorySearchName)
         //then check the result
         assertEquals(25.0, percentage)
     }
     @Test
-    fun shoud_ReturnPercentageOfMedicalAppsValue_when_MedicalIsNull() {
+    fun shoud_ReturnPercentageOfMedicalAppsValue_when_CategoryIsNull() {
         //give  category have null
         fakeApps[1].category = null
+        var categorySearchName = "medical"
         //when calculate the percentage of Medical Apps
-        val percentage = analyzer.calculatePercentageOfMedicalApps(fakeApps)
+        val percentage = analyzer.calculatePercentageOfMedicalApps(fakeApps ,categorySearchName)
         //then check the result
         assertEquals(20.0, percentage)
     }
@@ -201,8 +213,9 @@ internal class AnalyzerTest {
     @Test
     fun shoud_ReturnNull_when_ListIsEmpty() {
         //give empty list
+        var categorySearchName = "medical"
         //when calculate the percentage of Medical Apps
-        val percentage = analyzer.calculatePercentageOfMedicalApps(emptyList())
+        val percentage = analyzer.calculatePercentageOfMedicalApps(emptyList() ,categorySearchName)
         //then check the result
          assertEquals(null, percentage)
         //assertNull(percentage)
