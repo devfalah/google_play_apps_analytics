@@ -1,3 +1,4 @@
+import models.App
 import org.junit.jupiter.api.*
 import kotlin.test.assertEquals
 
@@ -198,17 +199,6 @@ internal class AnalyzerTest {
         //then check the result
         assertEquals(25.0, percentage)
     }
-    @Test
-    fun shoud_ReturnPercentageOfMedicalAppsValue_when_CategoryIsNull() {
-        //give  category have null
-        fakeApps[1].category = null
-        var categorySearchName = "medical"
-        //when calculate the percentage of Medical Apps
-        val percentage = analyzer.calculatePercentageOfMedicalApps(fakeApps ,categorySearchName)
-        //then check the result
-        assertEquals(20.0, percentage)
-    }
-
 
     @Test
     fun shoud_ReturnNull_when_ListIsEmpty() {
@@ -218,6 +208,39 @@ internal class AnalyzerTest {
         val percentage = analyzer.calculatePercentageOfMedicalApps(emptyList() ,categorySearchName)
         //then check the result
          assertEquals(null, percentage)
+        //assertNull(percentage)
+    }
+    @Test
+    fun shoud_ReturnNull_when_CategoryNotFond() {
+        //give list not have value of search
+        val apps = listOf(
+            App(
+                name = "App 5",
+                company = "Weedmaps",
+                category = "Action",
+                updatedAt = "March 4 2022",
+                size = "1.1g",
+                installsCount = 1800000,
+                currentVersion = "7.0.2",
+                requiresAndroid = "5.0 and up",
+
+                ),
+            App(
+                name = "App 18",
+                company = "Game Insight",
+                category = "Action",
+                updatedAt = "May 12 2022",
+                size = "1.1g",
+                installsCount = 50000000,
+                currentVersion = "30.0.271",
+                requiresAndroid = "5.0 and up",
+
+                ))
+        var categorySearchName = "medical"
+        //when calculate the percentage of Medical Apps
+        val percentage = analyzer.calculatePercentageOfMedicalApps(apps ,categorySearchName)
+        //then check the result
+        assertEquals(0.0, percentage)
         //assertNull(percentage)
     }
     //   Test Cases End

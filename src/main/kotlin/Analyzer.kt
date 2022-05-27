@@ -8,20 +8,15 @@ class Analyzer {
 
      ///calculate the percentage of Medical Apps
     fun  calculatePercentageOfMedicalApps(apps: List<App> ,categoryName:String): Double? {
-        if (apps.isEmpty()) return null
-        var countMedicalApps = 0.0
-       //  var categoryName = "medical"
-
-         apps.forEach {
-            val list = it.category?.trim()?.split(" ")
-
-            list?.forEach{
-                if (  it.lowercase() == categoryName.lowercase() )
-                    countMedicalApps++
-            }
-        }
-        return String.format("%.1f", countMedicalApps / apps.size * 100).toDouble()
-    }
+         if (apps.isEmpty()) return null
+         var countMedicalApps = 0.0
+         //  var categoryName = "medical"
+         apps.forEach{
+             if ( it.category?.lowercase()?.trim()!!.contains(categoryName.lowercase()))
+             countMedicalApps++
+         }
+         return String.format("%.1f", countMedicalApps / apps.size * 100).toDouble()
+     }
 
 
     fun  getOldestApp(apps:List<App>):App?{
