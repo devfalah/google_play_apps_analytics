@@ -1,6 +1,6 @@
 package models
 
-class App(
+data class App(
     val name:String,
     val company:String,
     val category: String,
