@@ -8,8 +8,7 @@ class Analyzer {
     private val helper = Helper()
     private fun Double.roundTo1Digit(): Double = round(this * 10) / 10
     fun calculateCountAppsDevelopedByGoogle(apps:List<App>): Int {
-        return apps.filter {
-            it.company.contains("Google") }.size
+        return apps.filter { it.company.contains("Google") }.size
     }
 
 
