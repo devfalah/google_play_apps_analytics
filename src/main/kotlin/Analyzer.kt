@@ -1,10 +1,17 @@
 import models.App
+import java.util.*
 
 class Analyzer {
 
+<<<<<<< HEAD
     private val helper = Helper()
     fun calculateCountAppsDevelopedByGoogle(apps:List<App>):Int{
         TODO("not implemented")
+=======
+    fun calculateCountAppsDevelopedByGoogle(apps:List<App>): Int {
+        return apps.filter { it.company.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+            .trimStart().contains("Google") }.size
+>>>>>>> 291d12f2c86844399115468bc42e498573eef40e
     }
 
 

@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 291d12f2c86844399115468bc42e498573eef40e
 import models.App
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -154,6 +157,7 @@ internal class AnalyzerTest {
         assertEquals(null, oldestApp)
     }
 
+<<<<<<< HEAD
 
     @Test
     fun shouldReturn_Correct10LargestApp_WhenHaveCorrectData () {
@@ -391,3 +395,71 @@ internal class AnalyzerTest {
     //   Test Cases End
     //=========================================
 }
+=======
+    // Test Cases for : ((getNumberOfAppsDevByGoogle))
+    //=========================================
+
+    @Test
+    fun should_ReturnZero_When_EmptyList() {
+        // given list
+      // var listCompany = listOf<App>(fakeApps[4], fakeApps[17])
+        var listCompany = listOf<App>()
+        // when searching for a company
+        var numOfAppDev = analyzer.calculateCountAppsDevelopedByGoogle(listCompany)
+        // then check
+        assertEquals(0, numOfAppDev)
+    }
+
+    @Test
+    fun should_ReturnZero_When_NotFindCompane() {
+   var listCompany = listOf<App>(
+    fakeApps[2],fakeApps[3],fakeApps[4],fakeApps[5])
+        // when searching for a company
+        val numOfAppDev = analyzer.calculateCountAppsDevelopedByGoogle(listCompany)
+        // then check
+        assertEquals(0, numOfAppDev)
+    }
+
+    @Test
+    fun should_ReturnOne_When_FindOneCompany() {
+        var listCompany = listOf<App>(
+            fakeApps[0],fakeApps[6])
+        // when searching for company
+        val numOfAppDev = analyzer.calculateCountAppsDevelopedByGoogle(listCompany)
+        // then check
+        assertEquals(1, numOfAppDev)
+    }
+
+    @Test
+    fun should_ReturnOne_When_FindOneCompanyLowercase() {
+        var listCompany = listOf<App>(
+            fakeApps[15],fakeApps[6])
+        // when searching for company
+        val numOfAppDev = analyzer.calculateCountAppsDevelopedByGoogle(listCompany)
+        // then check
+        assertEquals(1, numOfAppDev)
+    }
+
+    @Test
+    fun should_ReturnTow_When_FindTowCompany() {
+        // given list
+        var listCompany = listOf<App>(
+            fakeApps[0],fakeApps[6],fakeApps[7],fakeApps[10])
+        // when searching for company
+        val numOfAppDev = analyzer.calculateCountAppsDevelopedByGoogle(listCompany)
+        // then check
+        assertEquals(2, numOfAppDev)
+    }
+
+    @Test
+    fun should_ReturnSix_When_FindAllCompany() {
+        // given list
+        var listCompany = fakeApps
+        // when searching for compane
+        val numOfAppDev = analyzer.calculateCountAppsDevelopedByGoogle(listCompany)
+        // then check
+        assertEquals(6, numOfAppDev)
+    }
+
+}
+>>>>>>> 291d12f2c86844399115468bc42e498573eef40e

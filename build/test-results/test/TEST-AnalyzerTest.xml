@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testsuite name="AnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-28T05:25:49" hostname="DESKTOP-H7H5K9J" time="0.029">
   <properties/>
   <testcase name="should_ReturnNull_when_ListIsEmpty()" classname="AnalyzerTest" time="0.029"/>
+=======
+<testsuite name="AnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-28T04:35:40" hostname="WIN7-PC" time="0.064">
+  <properties/>
+  <testcase name="should_ReturnTow_When_FindTowCompany()" classname="AnalyzerTest" time="0.064"/>
+>>>>>>> 291d12f2c86844399115468bc42e498573eef40e
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
