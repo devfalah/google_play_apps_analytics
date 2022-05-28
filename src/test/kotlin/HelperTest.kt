@@ -16,7 +16,7 @@ internal class HelperTest {
     @Test
     fun shouldReturnCorrectSize_When_HaveSizeInGB() {
         // given size in GB
-        val size : String = "5G"
+        val size = "5G"
         // when convert to MB
         val sizeInMB = helper.convertSize(size)
         // then
@@ -26,7 +26,7 @@ internal class HelperTest {
     @Test
     fun shouldReturnCorrectSize_When_HaveSizeInMB() {
         // given size in GB
-        val size : String = "5M"
+        val size = "5M"
         // when convert to MB
         val sizeInMB = helper.convertSize(size)
         // then
@@ -36,7 +36,7 @@ internal class HelperTest {
     @Test
     fun shouldReturnCorrectSize_When_HaveSizeInKB() {
         // given size in GB
-        val size : String = "1000k"
+        val size = "1000k"
         // when convert to MB
         val sizeInMB = helper.convertSize(size)
         // then
@@ -46,7 +46,7 @@ internal class HelperTest {
     @Test
     fun shouldReturnZero_When_HaveInvalidSize() {
         // given size in GB
-        val size : String = "no size"
+        val size = "no size"
         // when convert to MB
         val sizeInMB = helper.convertSize(size)
         // then
@@ -56,7 +56,7 @@ internal class HelperTest {
     @Test
     fun shouldReturnCorrectSize_When_HaveSizeSymbolInAnyLetterCases() {
         // given size in GB
-        val size : String = "5m"
+        val size = "5m"
         // when convert to MB
         val sizeInMB = helper.convertSize(size)
         // then
