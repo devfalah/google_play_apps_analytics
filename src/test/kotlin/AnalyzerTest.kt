@@ -3,7 +3,6 @@ import models.App
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
-import kotlin.test.BeforeTest
 
 
 import kotlin.test.assertEquals
@@ -19,6 +18,64 @@ internal class AnalyzerTest {
     fun setup() {
         this.analyzer = Analyzer()
     }
+
+    // Test Cases for : ((calculatePercentageOfAppsRunningOnAndroid9AndUpOnly method))
+    //=========================================================
+
+    @Test
+    fun should_return_CorrectValue_when_propertyHasSpaceInLeft() {
+        // given list of apps
+        val listOfApps = fakeApps.toMutableList()
+        listOfApps[11].requiresAndroid = " 9 and up"
+        // when finding the app run on android 9 and up
+        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
+        //then check the Result between  expected and actually
+        assertEquals(20.0,result)
+    }
+    @Test
+    fun should_return_CorrectValue_when_propertyHasCorrectValue() {
+        // given list of apps
+        val listOfApps = fakeApps.toMutableList()
+        listOfApps[12].requiresAndroid = "9 and up "
+        // when finding the app run on android 9 and up
+        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
+        //then check the Result between  expected and actually
+        assertEquals(20.0,result)
+    }
+
+    @Test
+    fun should_ReturnMenusOne_When_propertyHasNoSpace(){
+        // given list of apps
+        val listOfApps = fakeApps.toMutableList()
+        listOfApps[12].requiresAndroid = "9andup"
+        // when finding the app run on android 9 and up
+        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
+        //then check the Result between  expeted and actualy
+        assertEquals(-1.0,result)
+    }
+
+
+    @Test
+    fun should_return_MenusOne_when_propertyHasNoSpaceInRight() {
+        // given list of apps
+        val listOfApps = fakeApps.toMutableList()
+        listOfApps[11].requiresAndroid = "9 andup"
+        // when finding the app run on android 9 and up
+        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
+        //then check the Result between  expeted and actualy
+        assertEquals(-1.0,result)
+    }
+    @Test
+    fun should_return_MenusOne_when_propertyHasNoSpaceInLeft() {
+        // given list of apps
+        val listOfApps = fakeApps.toMutableList()
+        listOfApps[11].requiresAndroid = "9and up"
+        // when finding the app run on android 9 and up
+        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
+        //then check the Result between  expeted and actualy
+        assertEquals(-1.0,result)
+    }
+
 
     // Test Cases for : ((getOldestApp method))
     //=========================================
@@ -383,16 +440,7 @@ internal class AnalyzerTest {
     //     Test Cases for : ((calculatePercentageOfAppsRunningOnAndroid9AndUpOnly method))
     //=========================================================
 
-    @Test
-    fun should_return_CorrectValue_when_propertyHasSpaceInLeft() {
-        // given list of apps
-        val listOfApps = fakeApps.toMutableList()
-        listOfApps[11].requiresAndroid = " 9 and up"
-        // when finding the app run on android 9 and up
-        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
-        //then check the Result between  expeted and actualy
-        assertEquals(20.0,result)
-    }
+
     @Test
     fun should_return_CorrectValue_when_propertyHasSpaceInRight() {
         // given list of apps
@@ -413,38 +461,11 @@ internal class AnalyzerTest {
         //then check the Result between  expeted and actualy
         assertEquals(20.0,result)
     }
-    @Test
-    fun should_ReturnMenusOne_When_propertyHasNoSpace(){
-        // given list of apps
-        val listOfApps = fakeApps.toMutableList()
-        listOfApps[12].requiresAndroid = "9andup"
-        // when finding the app run on android 9 and up
-        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
-        //then check the Result between  expeted and actualy
-        assertEquals(-1.0,result)
-    }
 
 
-    @Test
-    fun should_return_MenusOne_when_propertyHasNoSpaceInRight() {
-        // given list of apps
-        val listOfApps = fakeApps.toMutableList()
-        listOfApps[11].requiresAndroid = "9 andup"
-        // when finding the app run on android 9 and up
-        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
-        //then check the Result between  expeted and actualy
-        assertEquals(-1.0,result)
-    }
-    @Test
-    fun should_return_MenusOne_when_propertyHasNoSpaceInLeft() {
-        // given list of apps
-        val listOfApps = fakeApps.toMutableList()
-        listOfApps[11].requiresAndroid = "9and up"
-        // when finding the app run on android 9 and up
-        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
-        //then check the Result between  expeted and actualy
-        assertEquals(-1.0,result)
-    }
+
+
+
     @Test
     fun shpuld_return_MenusOne_when_listIsEmpty() {
         // given list of apps
@@ -470,7 +491,7 @@ internal class AnalyzerTest {
 
     @Test
     fun should_ReturnZero_When_NotFindCompane() {
-        val listCompany = listOf<App>(
+        val listCompany = listOf(
             fakeApps[2],fakeApps[3],fakeApps[4],fakeApps[5])
         // when searching for a company
         val numOfAppDev = analyzer.calculateCountAppsDevelopedByGoogle(listCompany)
@@ -480,7 +501,7 @@ internal class AnalyzerTest {
 
     @Test
     fun should_ReturnOne_When_FindOneCompany() {
-        val listCompany = listOf<App>(
+        val listCompany = listOf(
             fakeApps[0],fakeApps[6])
         // when searching for company
         val numOfAppDev = analyzer.calculateCountAppsDevelopedByGoogle(listCompany)
@@ -490,7 +511,7 @@ internal class AnalyzerTest {
 
     @Test
     fun should_ReturnOne_When_FindOneCompanyLowercase() {
-        val listCompany = listOf<App>(
+        val listCompany = listOf(
             fakeApps[15],fakeApps[6])
         // when searching for company
         val numOfAppDev = analyzer.calculateCountAppsDevelopedByGoogle(listCompany)
@@ -501,7 +522,7 @@ internal class AnalyzerTest {
     @Test
     fun should_ReturnTow_When_FindTowCompany() {
         // given list
-        val listCompany = listOf<App>(
+        val listCompany = listOf(
             fakeApps[0],fakeApps[6],fakeApps[7],fakeApps[10])
         // when searching for company
         val numOfAppDev = analyzer.calculateCountAppsDevelopedByGoogle(listCompany)

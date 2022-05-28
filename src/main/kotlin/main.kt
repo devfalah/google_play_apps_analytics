@@ -1,6 +1,8 @@
 
 fun main() {
 
-    val googlePlayApps=DataParser().getGooglePlayAppsFromCsv()
+
+  val googlePlayApps=DataParser().getGooglePlayAppsFromCsv()
+
 }
 
