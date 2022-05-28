@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-28T05:25:49" hostname="DESKTOP-H7H5K9J" time="0.029">
+<testsuite name="AnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-28T10:04:12" hostname="DESKTOP-H7H5K9J" time="0.045">
   <properties/>
-  <testcase name="should_ReturnNull_when_ListIsEmpty()" classname="AnalyzerTest" time="0.029"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="should_return_CorrectValue_when_propertyHasCorrectValue()" classname="AnalyzerTest" time="0.045"/>
+  <system-out><![CDATA[20.0
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -23,6 +23,91 @@ internal class AnalyzerTest {
         this.analyzer = Analyzer()
     }
 
+    // Test Cases for : ((calculatePercentageOfAppsRunningOnAndroid9AndUpOnly method))
+    //=========================================================
+    @Test
+    fun should_return_CorrectValue_when_propertyHasCorrectValue() {
+        // given list of apps
+        var listOfApps = fakeApps.toMutableList()
+        listOfApps[12].requiresAndroid = "9 and up "
+        // when finding the app run on android 9 and up
+        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
+        //then check the Result between  expeted and actualy
+        println(result)
+        assertEquals(20.0,result)
+    }
+    @Test
+    fun should_return_CorrectValue_when_propertyHasSpaceInLeft() {
+        // given list of apps
+        var listOfApps = fakeApps.toMutableList()
+        listOfApps[11].requiresAndroid = " 9 and up"
+        // when finding the app run on android 9 and up
+        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
+        //then check the Result between  expeted and actualy
+        assertEquals(20.0,result)
+    }
+    @Test
+    fun should_return_CorrectValue_when_propertyHasSpaceInRight() {
+        // given list of apps
+        var listOfApps = fakeApps.toMutableList()
+        listOfApps[11].requiresAndroid = "9 and up "
+        // when finding the app run on android 9 and up
+        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
+        //then check the Result between  expeted and actualy
+        assertEquals(20.0,result)
+    }
+    @Test
+    fun should_return_CorrectValue_when_propertyHasSpaceInLeftAndRight() {
+        // given list of apps
+        var listOfApps = fakeApps.toMutableList()
+        listOfApps[11].requiresAndroid = " 9 and up "
+        // when finding the app run on android 9 and up
+        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
+        //then check the Result between  expeted and actualy
+        assertEquals(20.0,result)
+    }
+    @Test
+    fun should_ReturnMenusOne_When_propertyHasNoSpace(){
+        // given list of apps
+        var listOfApps = fakeApps.toMutableList()
+        listOfApps[12].requiresAndroid = "9andup"
+        // when finding the app run on android 9 and up
+        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
+        //then check the Result between  expeted and actualy
+        assertEquals(-1.0,result)
+    }
+
+
+    @Test
+    fun should_return_MenusOne_when_propertyHasNoSpaceInRight() {
+        // given list of apps
+        var listOfApps = fakeApps.toMutableList()
+        listOfApps[11].requiresAndroid = "9 andup"
+        // when finding the app run on android 9 and up
+        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
+        //then check the Result between  expeted and actualy
+        assertEquals(-1.0,result)
+    }
+    @Test
+    fun should_return_MenusOne_when_propertyHasNoSpaceInLeft() {
+        // given list of apps
+        var listOfApps = fakeApps.toMutableList()
+        listOfApps[11].requiresAndroid = "9and up"
+        // when finding the app run on android 9 and up
+        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
+        //then check the Result between  expeted and actualy
+        assertEquals(-1.0,result)
+    }
+    @Test
+    fun shpuld_return_MenusOne_when_listIsEmpty() {
+        // given list of apps
+        var listOfApps = listOf<App>()
+        // when finding the app running on android 9 and up
+        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
+        //then check the Result between  expeted and actualy
+        assertEquals(-1.0,result)
+    }
+
     // Test Cases for : ((getOldestApp method))
     //=========================================
     @Test
