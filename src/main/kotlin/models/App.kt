@@ -9,7 +9,7 @@ data  class App(
     val size:String,
     val installsCount:Long,
     val currentVersion:String,
-    val requiresAndroid:String,
+    var requiresAndroid:String,
 ){
     override fun equals(other: Any?): Boolean {
         return size.uppercase() == (other as App).size.uppercase()

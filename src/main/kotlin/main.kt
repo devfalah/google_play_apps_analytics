@@ -1,4 +1,3 @@
-import models.App
 
 fun main() {
 
