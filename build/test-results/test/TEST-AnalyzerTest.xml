@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="٢٠٢٢-٠٥-٢٧T٢٢:١٥:٤٢" hostname="DESKTOP-6EJC92A" time="0.038">
+<testsuite name="AnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-28T10:04:12" hostname="DESKTOP-H7H5K9J" time="0.045">
   <properties/>
-  <testcase name="should_return_CorrectValue_when_propertyHasSpaceInRight()" classname="AnalyzerTest" time="0.038"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="should_return_CorrectValue_when_propertyHasCorrectValue()" classname="AnalyzerTest" time="0.045"/>
+  <system-out><![CDATA[20.0
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
