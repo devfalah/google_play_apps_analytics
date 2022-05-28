@@ -404,48 +404,6 @@ internal class AnalyzerTest {
             assertEquals(20.0,result)
         }
 
-        @Test
-        fun should_ReturnMenusOne_When_propertyHasNoSpace(){
-            // given list of apps
-            val listOfApps = fakeApps.toMutableList()
-            listOfApps[12].requiresAndroid = "9andup"
-            // when finding the app run on android 9 and up
-            val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
-            //then check the Result between  expeted and actualy
-            assertEquals(-1.0,result)
-        }
-
-
-        @Test
-        fun should_return_MenusOne_when_propertyHasNoSpaceInRight() {
-            // given list of apps
-            val listOfApps = fakeApps.toMutableList()
-            listOfApps[11].requiresAndroid = "9 andup"
-            // when finding the app run on android 9 and up
-            val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
-            //then check the Result between  expeted and actualy
-            assertEquals(-1.0,result)
-        }
-        @Test
-        fun should_return_MenusOne_when_propertyHasNoSpaceInLeft() {
-            // given list of apps
-            val listOfApps = fakeApps.toMutableList()
-            listOfApps[11].requiresAndroid = "9and up"
-            // when finding the app run on android 9 and up
-            val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
-            //then check the Result between  expeted and actualy
-            assertEquals(-1.0,result)
-        }
-        @Test
-        fun should_return_CorrectValue_when_propertyHasSpaceInRight() {
-            // given list of apps
-            val listOfApps = fakeApps.toMutableList()
-            listOfApps[11].requiresAndroid = "9 and up "
-            // when finding the app run on android 9 and up
-            val result = analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
-            //then check the Result between  expeted and actualy
-            assertEquals(20.0, result)
-        }
 
         @Test
         fun should_return_CorrectValue_when_propertyHasSpaceInLeftAndRight() {

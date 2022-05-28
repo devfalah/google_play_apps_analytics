@@ -1,5 +1,4 @@
-
-
+import kotlin.math.round
 
 
 class Helper {
@@ -17,4 +16,6 @@ class Helper {
         }
        return 0.0
     }
+
+    public fun roundTo1Digit(number: Double): Double = round(number * 10) / 10
 }

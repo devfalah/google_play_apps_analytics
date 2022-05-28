@@ -6,7 +6,6 @@ import kotlin.math.round
 class Analyzer {
 
     private val helper = Helper()
-    private fun Double.roundTo1Digit(): Double = round(this * 10) / 10
     fun calculateCountAppsDevelopedByGoogle(apps:List<App>): Int {
         return apps.filter { it.company.contains("Google") }.size
     }
@@ -16,7 +15,7 @@ class Analyzer {
         if (apps.isEmpty()) return null
         val countOfMedicalApps = apps.filter { it.category.lowercase().trim() == "medical"  }.size
 
-        return ( countOfMedicalApps.toDouble() / apps.size * 100).roundTo1Digit()
+        return helper.roundTo1Digit( countOfMedicalApps.toDouble() / apps.size * 100)
     }
 
 
@@ -26,15 +25,12 @@ class Analyzer {
     fun  calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(apps:List<App>):Double{
         var counter = 0.0
         if (apps.isEmpty()) return -1.0
-
         apps.forEach {
-
             if (it.requiresAndroid.trim() == "9 and up") {
                 counter++
-            } else if (it.requiresAndroid == "9andup" || it.requiresAndroid == "9 andup" || it.requiresAndroid == "9and up") return -1.0
-
+            }
         }
-        return ((counter / apps.size)* 100).roundTo1Digit()
+        return helper.roundTo1Digit((counter / apps.size)* 100)
     }
     fun  getLargest10Apps(apps:List<App>):List<App> {
         if (apps.isEmpty()) {
