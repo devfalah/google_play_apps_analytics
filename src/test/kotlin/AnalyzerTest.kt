@@ -6,8 +6,7 @@ import org.junit.jupiter.api.TestInstance
 
 
 import kotlin.test.assertEquals
-
-
+import kotlin.test.assertNull
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -68,9 +67,6 @@ internal class AnalyzerTest {
     }
 
     @Test
-
-
-
     fun should_ReturnNull_When_MonthIsAnumber() {
         // given list of apps
         val newFakeApps = fakeApps.toMutableList()
@@ -338,10 +334,6 @@ internal class AnalyzerTest {
 
 
 
-
-
-
-
     //   Test Cases End
     //=========================================
 
@@ -367,7 +359,7 @@ internal class AnalyzerTest {
         assertEquals(25.0, percentage)
     }
     @Test
-    fun should_ReturnPercentageOfMedicalAppsValue_when_CategoryIsUpercase() {
+    fun should_ReturnPercentageOfMedicalAppsValue_when_CategoryIsUppercase() {
         //give category upercase
         fakeApps[1].category = "MEDICAL"
         //when calculate the percentage of Medical Apps
@@ -386,16 +378,6 @@ internal class AnalyzerTest {
         //then check the result
         assertEquals(25.0, percentage)
     }
-    @Test
-    fun should_ReturnPercentageOfMedicalAppsValue_when_CategoryIsNull() {
-        //give  category have null
-        fakeApps[1].category = null
-        //when calculate the percentage of Medical Apps
-        val percentage = analyzer.calculatePercentageOfMedicalApps(fakeApps)
-        //then check the result
-        assertEquals(20.0, percentage)
-    }
-
 
     @Test
     fun should_ReturnNull_when_ListIsEmpty() {
@@ -403,8 +385,8 @@ internal class AnalyzerTest {
         //when calculate the percentage of Medical Apps
         val percentage = analyzer.calculatePercentageOfMedicalApps(emptyList())
         //then check the result
-         assertEquals(null, percentage)
-        //assertNull(percentage)
+
+        assertNull(percentage)
     }
     //   Test Cases End
     //=========================================

@@ -2,17 +2,17 @@ import models.App
 
 class Analyzer {
 
-    var helper = Helper()
+    private val helper = Helper()
     fun calculateCountAppsDevelopedByGoogle(apps:List<App>):Int{
         TODO("not implemented")
     }
 
-     ///calculate the percentage of Medical Apps
+
     fun  calculatePercentageOfMedicalApps(apps: List<App>): Any? {
         if (apps.isEmpty()) return null
         var countMedicalApps = 0.0
         apps.forEach {
-            if (  it.category?.lowercase()?.trim() == "medical" )
+            if (  it.category.lowercase().trim() == "medical" )
                 countMedicalApps++
         }
         return String.format("%.1f", countMedicalApps / apps.size * 100).toDouble()
@@ -33,7 +33,7 @@ class Analyzer {
     }
     fun  getTop10InstalledApps(apps: List<App>):List<App>{
         if (apps.isEmpty()||apps.size<10){
-            return emptyList<App>()
+            return emptyList()
         }
 
         if(apps.all { it.installsCount < 0 })  {
