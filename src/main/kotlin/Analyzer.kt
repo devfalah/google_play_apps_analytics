@@ -6,21 +6,18 @@ import kotlin.math.round
 class Analyzer {
 
     private val helper = Helper()
-
+    private fun Double.roundTo1Digit(): Double = round(this * 10) / 10
     fun calculateCountAppsDevelopedByGoogle(apps:List<App>): Int {
-        return apps.filter { it.company.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
-            .trimStart().contains("Google") }.size
+        return apps.filter {
+            it.company.contains("Google") }.size
     }
 
 
-    fun  calculatePercentageOfMedicalApps(apps: List<App>): Any? {
+    fun  calculatePercentageOfMedicalApps(apps: List<App>): Double? {
         if (apps.isEmpty()) return null
-        var countMedicalApps = 0.0
-        apps.forEach {
-            if (  it.category.lowercase().trim() == "medical" )
-                countMedicalApps++
-        }
-        return ( countMedicalApps / apps.size * 100).roundTo1Digit()
+        val countOfMedicalApps = apps.filter { it.category.lowercase().trim() == "medical"  }.size
+
+        return ( countOfMedicalApps.toDouble() / apps.size * 100).roundTo1Digit()
     }
 
 
@@ -57,6 +54,6 @@ class Analyzer {
         return apps.sortedByDescending { it.installsCount}.take(10)
 
     }
-    private fun Double.roundTo1Digit(): Double = round(this * 10) / 10
+
 
 }

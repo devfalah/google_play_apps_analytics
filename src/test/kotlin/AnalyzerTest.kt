@@ -32,16 +32,6 @@ internal class AnalyzerTest {
         //then check the Result between  expected and actually
         assertEquals(20.0,result)
     }
-    @Test
-    fun should_return_CorrectValue_when_propertyHasCorrectValue() {
-        // given list of apps
-        val listOfApps = fakeApps.toMutableList()
-        listOfApps[12].requiresAndroid = "9 and up "
-        // when finding the app run on android 9 and up
-        val result=analyzer.calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(listOfApps)
-        //then check the Result between  expected and actually
-        assertEquals(20.0,result)
-    }
 
     @Test
     fun should_ReturnMenusOne_When_propertyHasNoSpace(){

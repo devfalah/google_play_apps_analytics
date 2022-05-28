@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="AnalyzerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-28T15:29:26" hostname="DESKTOP-H7H5K9J" time="0.063">
+<testsuite name="AnalyzerTest" tests="26" skipped="0" failures="0" errors="0" timestamp="2022-05-28T15:42:56" hostname="DESKTOP-H7H5K9J" time="0.158">
   <properties/>
-  <testcase name="should_return_CorrectValue_when_propertyHasCorrectValue()" classname="AnalyzerTest" time="0.063"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="should_ReturnZero_When_NotFindCompane()" classname="AnalyzerTest" time="0.093"/>
+  <testcase name="shouldReturn_Correct10LargestApp_WhenHaveCorrectData()" classname="AnalyzerTest" time="0.015"/>
+  <testcase name="shouldReturnEmpty10LargestList_When_HaveEmptyAppList()" classname="AnalyzerTest" time="0.002"/>
+  <testcase name="should_ReturnPercentageOfMedicalAppsValue_when_CategoryHaveSpace()" classname="AnalyzerTest" time="0.005"/>
+  <testcase name="should_returnCorrectValue_When_GiveCorrect()" classname="AnalyzerTest" time="0.007"/>
+  <testcase name="shouldReturn_Correct10LargestApp_WhenHaveSizeSymbolINAnyLetterCases()" classname="AnalyzerTest" time="0.001"/>
+  <testcase name="should_ReturnTow_When_FindTowCompany()" classname="AnalyzerTest" time="0.001"/>
+  <testcase name="should_return_CorrectValue_when_propertyHasSpaceInLeftAndRight()" classname="AnalyzerTest" time="0.001"/>
+  <testcase name="should_return_CorrectValue_when_propertyHasSpaceInLeft()" classname="AnalyzerTest" time="0.001"/>
+  <testcase name="should_ReturnZero_When_EmptyList()" classname="AnalyzerTest" time="0.003"/>
+  <testcase name="shouldReturn_Correct10LargestApp_WhenSizeWithoutNumericValue()" classname="AnalyzerTest" time="0.0"/>
+  <testcase name="should_ReturnPercentageOfMedicalAppsValue_when_ListOfAppsIsCorrect()" classname="AnalyzerTest" time="0.001"/>
+  <testcase name="should_ReturnNull_when_ListIsEmpty()" classname="AnalyzerTest" time="0.001"/>
+  <testcase name="shpuld_return_MenusOne_when_listIsEmpty()" classname="AnalyzerTest" time="0.0"/>
+  <testcase name="should_ReturnPercentageOfMedicalAppsValue_when_CategoryIsLowercase()" classname="AnalyzerTest" time="0.001"/>
+  <testcase name="should_ReturnSix_When_FindAllCompany()" classname="AnalyzerTest" time="0.0"/>
+  <testcase name="should_return_CorrectValue_when_propertyHasSpaceInRight()" classname="AnalyzerTest" time="0.002"/>
+  <testcase name="should_returnNull_When_TheListLessThan10()" classname="AnalyzerTest" time="0.0"/>
+  <testcase name="should_returnNull_When_GiveNegativeValue()" classname="AnalyzerTest" time="0.001"/>
+  <testcase name="should_ReturnPercentageOfMedicalAppsValue_when_CategoryIsUppercase()" classname="AnalyzerTest" time="0.001"/>
+  <testcase name="should_return_MenusOne_when_propertyHasNoSpaceInLeft()" classname="AnalyzerTest" time="0.001"/>
+  <testcase name="should_ReturnOne_When_FindOneCompany()" classname="AnalyzerTest" time="0.001"/>
+  <testcase name="should_ReturnMenusOne_When_propertyHasNoSpace()" classname="AnalyzerTest" time="0.0"/>
+  <testcase name="should_returnEmpty_When_EmptyList()" classname="AnalyzerTest" time="0.001"/>
+  <testcase name="should_ReturnOne_When_FindOneCompanyLowercase()" classname="AnalyzerTest" time="0.0"/>
+  <testcase name="should_return_MenusOne_when_propertyHasNoSpaceInRight()" classname="AnalyzerTest" time="0.001"/>
+  <system-out><![CDATA[App 7
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
