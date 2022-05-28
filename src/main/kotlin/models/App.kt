@@ -2,7 +2,7 @@ package models
 
 class App(
     val name:String,
-    val company:String,
+    var company:String,
     val category: String,
     var updatedAt:String,
     val size:String,

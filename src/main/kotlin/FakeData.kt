@@ -118,7 +118,7 @@ class FakeData {
 
         App(
             name = "App 11",
-            company = "Azur Interactive Games Limited",
+            company = "Azur Interactive Games Limited ",
             category = "Action",
             updatedAt = " January 25 2022",
             size = "87M",
@@ -173,7 +173,7 @@ class FakeData {
             ),
         App(
             name = "App 16",
-            company = "Craigpark Limited",
+            company = "google",
             category = "Productivity",
             updatedAt = "April 17 2022",
             size = "Varies with device",
