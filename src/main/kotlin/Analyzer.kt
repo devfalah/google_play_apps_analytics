@@ -6,12 +6,12 @@ class Analyzer {
         TODO("not implemented")
     }
 
-     ///calculate the percentage of Medical Apps
+     ///calculate the percentage of Category Apps
      fun  calculatePercentageOfMedicalApps(apps: List<App> ,categoryName:String): Double? {
          if (apps.isEmpty()) return null
          //  var categoryName = "medical"
-         val countMedicalApps =  apps.filter{ it.category?.lowercase()?.trim()!!.contains(categoryName.lowercase())}.size
-         return String.format("%.1f", countMedicalApps.toDouble()/ apps.size * 100).toDouble()
+         val countOfCategoryApps =  apps.filter{ it.category?.lowercase()?.trim()!!.contains(categoryName.lowercase())}.size
+         return String.format("%.1f", countOfCategoryApps.toDouble()/ apps.size * 100).toDouble()
      }
 
 
