@@ -38,7 +38,7 @@ class FakeData {
         App(
             name = "App 4",
             company = "Pazu Games",
-            category = "Medical",
+            category =  "Medical",
             updatedAt = "December 15 2021",
             size = "42M",
             installsCount = 100000,
