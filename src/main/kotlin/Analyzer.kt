@@ -7,15 +7,11 @@ class Analyzer {
     }
 
      ///calculate the percentage of Medical Apps
-    fun  calculatePercentageOfMedicalApps(apps: List<App> ,categoryName:String): Double? {
+     fun  calculatePercentageOfMedicalApps(apps: List<App> ,categoryName:String): Double? {
          if (apps.isEmpty()) return null
-         var countMedicalApps = 0.0
          //  var categoryName = "medical"
-         apps.forEach{
-             if ( it.category?.lowercase()?.trim()!!.contains(categoryName.lowercase()))
-             countMedicalApps++
-         }
-         return String.format("%.1f", countMedicalApps / apps.size * 100).toDouble()
+         val countMedicalApps =  apps.filter{ it.category?.lowercase()?.trim()!!.contains(categoryName.lowercase())}.size
+         return String.format("%.1f", countMedicalApps.toDouble()/ apps.size * 100).toDouble()
      }
 
 
