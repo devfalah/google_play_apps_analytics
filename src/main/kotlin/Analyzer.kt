@@ -1,8 +1,5 @@
 import models.App
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.math.round
+
 
 
 class Analyzer {
@@ -20,11 +17,14 @@ class Analyzer {
         return helper.roundTo1Digit( countOfMedicalApps.toDouble() / apps.size * 100)
     }
 
+    /**
+     * @return OldestApp in model app
+     * @param List<App>
+     *
+     */
+    fun  getOldestApp(apps:List<App>): App?  = apps.minByOrNull { it.updatedAt }
 
-    fun  getOldestApp(apps:List<App>):App?{
-        val formatter: DateFormat = SimpleDateFormat("MMMM dd yy")
-        return apps.minByOrNull { formatter.parse(it.updatedAt.trim()) }
-    }
+
     fun  calculatePercentageOfAppsRunningOnAndroid9AndUpOnly(apps:List<App>):Double{
         var counter = 0.0
         if (apps.isEmpty()) return -1.0
