@@ -2,10 +2,10 @@
 fun main() {
 
 
-  val googlePlayApps=DataParser().getGooglePlayAppsFromCsv()
+  val googlePlayApps = DataParser().getGooglePlayAppsFromCsv()
 
 //  println(googlePlayApps[0].updatedAt)
-  println(Analyzer().getOldestApp(googlePlayApps))
+  println(Analyzer().calculatePercentageOfMedicalApps(googlePlayApps))
 
 }
 
