@@ -7,7 +7,7 @@ data class App(
     val company: String,
     val category: String,
     val updatedAt: LocalDate,
-    val size: String,
+    val size: Double,
     val installsCount: Long,
     val currentVersion: String,
     val requiresAndroid: String,

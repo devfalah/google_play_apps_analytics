@@ -1,10 +1,8 @@
 import models.App
-
+import kotlin.math.round
 
 
 class Analyzer {
-
-    private val helper = Helper()
     fun calculateCountAppsDevelopedByGoogle(apps:List<App>): Int {
         return apps.filter { it.company.contains("Google") }.size
     }
@@ -14,12 +12,12 @@ class Analyzer {
         if (apps.isEmpty()) return null
         val countOfMedicalApps = apps.filter { it.category.lowercase().trim() == "medical"  }.size
 
-        return helper.roundTo1Digit( countOfMedicalApps.toDouble() / apps.size * 100)
+        return round( countOfMedicalApps.toDouble() / apps.size * 100) / 100
     }
 
     /**
      * @return OldestApp in model app
-     * @param List<App>
+     * @param apps<App>
      *
      */
     fun  getOldestApp(apps:List<App>): App?  = apps.minByOrNull { it.updatedAt }
@@ -33,14 +31,10 @@ class Analyzer {
                 counter++
             }
         }
-        return helper.roundTo1Digit((counter / apps.size)* 100)
+        return round( counter / apps.size * 100) / 100
     }
-    fun  getLargest10Apps(apps:List<App>):List<App> {
-        if (apps.isEmpty()) {
-            return emptyList()
-        }
-        return apps.sortedByDescending { helper.convertSize(it.size) }.take(10)
-    }
+    fun  getLargest10Apps(apps:List<App>):List<App> = apps.sortedByDescending { it.size }.take(10)
+
     fun  getTop10InstalledApps(apps: List<App>):List<App>{
         if (apps.isEmpty()||apps.size<10){
             return emptyList()
