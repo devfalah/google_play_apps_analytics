@@ -5,9 +5,9 @@ import java.util.*
 import kotlin.math.round
 
 
-class Analyzer {
+class Analyzer(helperConstructor: Helper) {
 
-    private val helper = Helper()
+    private val helper = helperConstructor
     fun calculateCountAppsDevelopedByGoogle(apps:List<App>): Int {
         return apps.filter { it.company.contains("Google") }.size
     }
