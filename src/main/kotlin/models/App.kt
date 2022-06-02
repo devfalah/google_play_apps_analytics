@@ -1,5 +1,4 @@
 package models
-
 import java.time.LocalDate
 
 data class App(
