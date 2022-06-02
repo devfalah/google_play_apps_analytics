@@ -1,47 +1,45 @@
 import models.App
-import java.text.DateFormat
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.math.round
 
 
 class Analyzer {
-
-    private val helper = Helper()
-    fun CountAppsDevelopedBySpecificCompany(apps:List<App>,companyName:String)= apps.filter { it.company.contains(companyName) }.size
+    fun countAppsDevelopedBySpecificCompany(apps:List<App>,companyName:String) = apps.count{(it.company).lowercase().contains((companyName).lowercase())}
 
 
 
     fun  findPercentageOfSpecificApp(apps: List<App>,appType:String): Double? {
         if (apps.isEmpty() && appType.isEmpty()) return null
-        val countSpecificApp = apps.filter { it.category == appType  }.size
-        return helper.roundTo1Digit( countSpecificApp.toDouble() / apps.size * 100)
+        val countSpecificApp = apps.count { it.category.lowercase() == appType.lowercase() }
+        return round( countSpecificApp.toDouble() / apps.size * 100)
     }
 
 
-    fun  getOldestApp(apps:List<App>)= apps.minByOrNull { SimpleDateFormat("MMMM dd yy").parse(it.updatedAt.trim()) }
+
+    /**
+     * @return OldestApp in model app
+     * @param apps<App>
+     *
+     */
+    fun  getOldestApp(apps:List<App>): String?  =
+        if(apps.isNotEmpty()){
+            apps.minByOrNull { it.updatedAt }!!.name}else null
 
 
 
-    fun  calculatePercentageOfAppsRunningOnSpecificVersion(apps:List<App>):Double{
+    fun  calculatePercentageOfAppsRunningOnSpecificVersion(apps:List<App>,version:String):Double{
         var counter = 0.0
         if (apps.isEmpty()) return -1.0
         apps.forEach {
-            if (it.requiresAndroid.trim() == "9 and up") {
+            if (it.requiresAndroid.trim() == version) {
                 counter++
             }
         }
-        return helper.roundTo1Digit((counter / apps.size)* 100)
+        return round( counter / apps.size * 100) / 100
     }
 
 
 
-    fun  getLargestNApps(apps:List<App>,n:Int):List<App> {
-        if (apps.isEmpty()) {
-            return emptyList()
-        }
-        return apps.sortedByDescending { helper.convertSize(it.size) }.take(n)
-    }
+    fun  getLargestApps(apps:List<App>,n:Int):List<App> = apps.sortedByDescending { it.size }.take(n)
 
 
 
@@ -49,10 +47,13 @@ class Analyzer {
         if (apps.isEmpty()){
             return emptyList()
         }
+
         if(apps.all { it.installsCount < 0 })  {
             return emptyList()
         }
         return apps.sortedByDescending { it.installsCount}.take(top)
 
     }
+
+
 }
