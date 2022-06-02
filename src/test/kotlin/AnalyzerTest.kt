@@ -2,6 +2,8 @@
 import models.App
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Test
+import utility.extension.convertSizeToUniqueUnit
+import utility.extension.convertStringDateToLocalDateObject
 import java.time.LocalDate
 import java.time.Month
 
@@ -15,14 +17,20 @@ import kotlin.test.*
 internal class AnalyzerTest {
     private lateinit var fakeApps :List<App>
     private lateinit var analyzer: Analyzer
+
     @BeforeAll
     fun setup() {
         this.analyzer = Analyzer()
     }
+
     @BeforeEach
-    fun initial(){
-        fakeApps=FakeData().fakeApps
+    fun initial() {
+        fakeApps = FakeData().fakeApps
     }
+
+    val fakeApps= listOf(
+        App("App 1", "Google", "Libraries & Demo", "November 18 2020".convertStringDateToLocalDateObject(), size = "5.0M".convertSizeToUniqueUnit(), installsCount = 5, currentVersion = "1", requiresAndroid = "4.4 and up"),
+
 
     @Test
     fun should_ReturnOldestApp_When_ListOfAppsIsCorrect() {
