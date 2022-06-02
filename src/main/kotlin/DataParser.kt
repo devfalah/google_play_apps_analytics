@@ -1,4 +1,5 @@
 import models.App
+import utility.SetIndex
 import utility.extension.convertSizeToUniqueUnit
 import utility.extension.convertStringDateToLocalDateObject
 import java.io.File
@@ -16,14 +17,14 @@ class DataParser {
             val appData=it.split(",")
             googlePlayApps.add(
                 App(
-                name=appData[0],
-                company = appData[1],
-                category = appData[2],
-                updatedAt = appData[3].convertStringDateToLocalDateObject(),
-                size = appData[4].convertSizeToUniqueUnit(),
-                installsCount = appData[5].toLong(),
-                currentVersion = appData[6],
-                requiresAndroid = appData[7],
+                name=appData[SetIndex.NAME],
+                company = appData[SetIndex.COMPANY],
+                category = appData[SetIndex.CATEGORY],
+                updatedAt = appData[SetIndex.UPDATED_AT].convertStringDateToLocalDateObject(),
+                size = appData[SetIndex.SIZE].convertSizeToUniqueUnit(),
+                installsCount = appData[SetIndex.INSTALLS_COUNT].toLong(),
+                currentVersion = appData[SetIndex.CURRENT_VERSION],
+                requiresAndroid = appData[SetIndex.REQUIRES_ANDROID],
                 )
             )
 
