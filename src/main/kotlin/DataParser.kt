@@ -1,6 +1,7 @@
 import models.App
 import utility.convertSizeToMegabyte
 import utility.convertStringDateToLocalDateObject
+import utility.extension.convertStringDateToLocalDateObject
 import java.io.File
 
 class DataParser {
@@ -19,7 +20,8 @@ class DataParser {
                 name=appData[0],
                 company = appData[1],
                 category = appData[2],
-                updatedAt =  convertStringDateToLocalDateObject(appData[3]) ,
+                updatedAt = appData[3].convertStringDateToLocalDateObject(),
+//                convertStringDateToLocalDateObject(appData[3]) ,
                 size = convertSizeToMegabyte(appData[4]),
                 installsCount = appData[5].toLong(),
                 currentVersion = appData[6],
