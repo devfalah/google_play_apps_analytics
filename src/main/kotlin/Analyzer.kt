@@ -21,8 +21,8 @@ class Analyzer {
      *
      */
     fun  getOldestApp(apps:List<App>): String?  =
-        if(apps.isNotEmpty()){
-            apps.minByOrNull { it.updatedAt }!!.name}else null
+        if(apps.isNotEmpty()) {
+            apps.minByOrNull { it.updatedAt }!!.name }else null
 
 
 

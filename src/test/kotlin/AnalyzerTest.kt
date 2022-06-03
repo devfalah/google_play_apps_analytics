@@ -1,4 +1,3 @@
-
 import models.App
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Test
@@ -8,22 +7,23 @@ import java.time.Month
 
 import kotlin.test.*
 
-
-
-
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class AnalyzerTest {
     private lateinit var fakeApps :List<App>
     private lateinit var analyzer: Analyzer
+
     @BeforeAll
     fun setup() {
         this.analyzer = Analyzer()
     }
+
     @BeforeEach
     fun initial(){
-        fakeApps=FakeData().fakeApps
+        fakeApps = FakeData().fakeApps
     }
 
+
+    /*
     @Test
     fun should_ReturnOldestApp_When_ListOfAppsIsCorrect() {
         // when finding the oldest app
@@ -58,43 +58,6 @@ internal class AnalyzerTest {
             // then
             assertEquals(exceptedApps, sortedApps)
         }
-
-//        @Test
-//        fun shouldReturn_Correct10LargestApp_WhenHaveSizeSymbolINAnyLetterCases() {
-//            // given list of apps
-//            val apps = listOf(
-//                App(
-//                    name = "App 5",
-//                    company = "Weedmaps",
-//                    category = "Medical",
-//                    updatedAt = LocalDate.of(2022, Month.MARCH,4),
-//                    size = "1.1g",
-//                    installsCount = 1800000,
-//                    currentVersion = "7.0.2",
-//                    requiresAndroid = "5.0 and up",
-//
-//                    ),
-//                App(
-//                    name = "App 18",
-//                    company = "Game Insight",
-//                    category = "Action",
-//                    updatedAt =  LocalDate.of(2022, Month.MAY,12),
-//                    size = "1.1g",
-//                    installsCount = 50000000,
-//                    currentVersion = "30.0.271",
-//                    requiresAndroid = "5.0 and up",
-//
-//                    )
-//            )
-//            // when sort apps descending
-//            val sortedApps = analyzer.getLargest10Apps(apps).take(2)
-//            val exceptedApps = listOf(
-//                fakeApps[17],
-//                fakeApps[4]
-//            )
-//            // then
-//            assertEquals(exceptedApps, sortedApps)
-//        }
 
         @Test
         fun shouldReturn_Correct10LargestApp_WhenSizeWithoutNumericValue() {
@@ -331,5 +294,7 @@ internal class AnalyzerTest {
             assertEquals(5, numOfAppDev)
         }
     }
+
+     */
 
 }
