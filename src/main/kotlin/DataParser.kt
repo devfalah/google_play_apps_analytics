@@ -1,7 +1,7 @@
 import models.App
 import utility.SetIndex
 import utility.extension.convertSizeToUniqueUnit
-import utility.extension.convertStringDateToLocalDateObject
+import utility.extension.convertStringToDateObject
 import java.io.File
 
 class DataParser {
@@ -20,7 +20,7 @@ class DataParser {
                 name=appData[SetIndex.NAME],
                 company = appData[SetIndex.COMPANY],
                 category = appData[SetIndex.CATEGORY],
-                updatedAt = appData[SetIndex.UPDATED_AT].convertStringDateToLocalDateObject(),
+                updatedAt = appData[SetIndex.UPDATED_AT].convertStringToDateObject(),
                 size = appData[SetIndex.SIZE].convertSizeToUniqueUnit(),
                 installsCount = appData[SetIndex.INSTALLS_COUNT].toLong(),
                 currentVersion = appData[SetIndex.CURRENT_VERSION],
