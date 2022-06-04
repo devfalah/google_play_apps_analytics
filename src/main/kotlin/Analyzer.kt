@@ -13,10 +13,11 @@ class Analyzer {
 
 
 
-    fun  findPercentageOfSpecificApp(apps: List<App>,appType:String): Double? {
-        if (apps.isEmpty() && appType.isEmpty()) return null
-        val countSpecificApp = apps.count { it.category.lowercase() == appType.lowercase() }
-        return round( countSpecificApp.toDouble() / apps.size * 100)
+    fun  findPercentageOfSpecificApp(apps: List<App>,appType:String): Double {
+        val countSpecificApp = apps.count { it.category.lowercase() == appType.lowercase().trim() }
+
+        return if ( apps.isEmpty() && appType.isEmpty() ) -1.0
+               else round( countSpecificApp.toDouble() / apps.size * 100)
     }
 
 
