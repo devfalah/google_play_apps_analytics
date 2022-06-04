@@ -6,9 +6,8 @@ fun main() {
     val file = readCSV.readCSV("assets/google_play.csv")
 
     val dataSource: DataSource = DataParser()
-    println(Analyzer().getOldestApp(dataSource.getAllApps(file)))
-    //    seeResultOfRequirements(googlePlayApps)
-
+   print( Analyzer().largestAppDevelopedSpecificCompany(dataSource.getAllApps(file)))
+    
 }
 
 fun seeResultOfRequirements(apps:List<App>):String {

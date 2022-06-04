@@ -27,9 +27,9 @@ class Analyzer {
      * @param apps<App>
      *
      */
-    fun  getOldestApp(apps:List<App>): String? {
+    fun  getOldestApp(apps:List<App>): App? {
         return if(apps.isNotEmpty()) {
-            apps.minByOrNull { it.updatedAt }!!.name
+            apps.minByOrNull { it.updatedAt }
         } else null
     }
 
@@ -47,7 +47,23 @@ class Analyzer {
         return round( counter / apps.size * 100) / 100
     }
 
-
+    /**
+     * function @return [App] developed by Specific Company
+     * @param company is default "Meta Platforms Inc."
+     */
+    fun largestAppDevelopedSpecificCompany(apps: List<App>, company: String = "Meta Platforms Inc." ): App? {
+        return when {
+            apps.isEmpty() -> null
+            company.isEmpty() -> null
+            else -> {
+                var companyApp: List<App> = apps.filter { it.company == company }
+                when {
+                    companyApp.isNullOrEmpty() -> null
+                    else -> getLargestApps(companyApp, 1)[0]
+                }
+            }
+        }
+    }
 
     fun  getLargestApps(apps:List<App>,n:Int):List<App> = apps.sortedByDescending { it.size }.take(n)
 
