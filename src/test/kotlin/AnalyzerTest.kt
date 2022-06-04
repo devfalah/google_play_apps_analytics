@@ -48,7 +48,7 @@ internal class AnalyzerTest {
 
     //test fun_2
     @Test
-    fun should_ReturnZero_when_CategoryIsEmpty(){
+    fun should_ReturnZero_when_CategoryIsBlankString(){
         //given
         //when calculate empty category
         val result = analyzer.findPercentageOfSpecificApp(fakeApps,"")
