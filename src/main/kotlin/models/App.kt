@@ -1,11 +1,11 @@
 package models
-import java.time.LocalDate
+import java.util.*
 
 data class App(
     val name: String,
     val company: String,
     val category: String,
-    val updatedAt: LocalDate,
+    val updatedAt: Date,
     val size: Double,
     val installsCount: Long,
     val currentVersion: String,
