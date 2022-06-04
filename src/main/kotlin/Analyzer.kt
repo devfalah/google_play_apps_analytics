@@ -3,6 +3,8 @@ import kotlin.math.round
 
 
 class Analyzer {
+
+    // Ali
     fun countAppsDevelopedBySpecificCompany(apps:List<App>,companyName:String): Int {
         return if ( apps.isNotEmpty() && companyName.isNotEmpty() ){
             apps.count { it.company.contains(companyName.trim()) }
@@ -15,7 +17,7 @@ class Analyzer {
 
 
 
-
+    // Ali
     fun  findPercentageOfSpecificApp(apps: List<App>,appType:String): Double {
         val countSpecificApp = apps.count { it.category.lowercase() == appType.lowercase().trim() }
 
@@ -25,11 +27,7 @@ class Analyzer {
 
 
 
-    /**
-     * @return OldestApp in model app
-     * @param apps<App>
-     *
-     */
+    // Ameer
     fun  getOldestApp(apps:List<App>): String? {
         return if(apps.isNotEmpty()) {
             apps.minByOrNull { it.updatedAt }!!.name
@@ -38,7 +36,7 @@ class Analyzer {
 
 
 
-
+    // ALi
     fun  calculatePercentageOfAppsRunningOnSpecificVersion(apps:List<App>,version:String):Double{
         var counter = 0.0
         if (apps.isEmpty()) return -1.0
@@ -51,11 +49,11 @@ class Analyzer {
     }
 
 
-
+    // Ameer
     fun  getLargestApps(apps:List<App>,n:Int):List<App> = apps.sortedByDescending { it.size }.take(n)
 
 
-
+    // Salah
     fun  getTopInstalledApps(apps: List<App>,top:Int):List<App>{
         if (apps.isEmpty()){
             return emptyList()
