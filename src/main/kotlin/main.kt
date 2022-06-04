@@ -2,8 +2,13 @@ import models.App
 
 
 fun main() {
-    val googlePlayApps=DataParser().getGooglePlayAppsFromCsv()
-        seeResultOfRequirements(googlePlayApps)
+    val readCSV = ReadCSV()
+    val file = readCSV.readCSV("assets/google_play.csv")
+
+    val dataSource: DataSource = DataParser()
+    println(Analyzer().getOldestApp(dataSource.getAllApps(file)))
+    //    seeResultOfRequirements(googlePlayApps)
+
 }
 
 fun seeResultOfRequirements(apps:List<App>):String {

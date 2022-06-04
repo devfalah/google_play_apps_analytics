@@ -3,7 +3,13 @@ import kotlin.math.round
 
 
 class Analyzer {
-    fun countAppsDevelopedBySpecificCompany(apps:List<App>,companyName:String) = apps.count{(it.company).lowercase().contains((companyName).lowercase())}
+
+
+    fun countAppsDevelopedBySpecificCompany(apps:List<App>,companyName:String) {
+        apps.count{
+            it.company.lowercase().contains((companyName).lowercase())
+        }
+    }
 
 
 
@@ -20,9 +26,12 @@ class Analyzer {
      * @param apps<App>
      *
      */
-    fun  getOldestApp(apps:List<App>): String?  =
-        if(apps.isNotEmpty()) {
-            apps.minByOrNull { it.updatedAt }!!.name }else null
+    fun  getOldestApp(apps:List<App>): String? {
+        return if(apps.isNotEmpty()) {
+            apps.minByOrNull { it.updatedAt }!!.name
+        } else null
+    }
+
 
 
 
