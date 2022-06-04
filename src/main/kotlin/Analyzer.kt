@@ -3,13 +3,16 @@ import kotlin.math.round
 
 
 class Analyzer {
-
-
-    fun countAppsDevelopedBySpecificCompany(apps:List<App>,companyName:String) {
-        apps.count{
-            it.company.lowercase().contains((companyName).lowercase())
+    fun countAppsDevelopedBySpecificCompany(apps:List<App>,companyName:String): Int {
+        return if ( apps.isNotEmpty() && companyName.isNotEmpty() ){
+            apps.count { it.company.contains(companyName.trim()) }
         }
+        else{
+            -1
+        }
+
     }
+
 
 
 
