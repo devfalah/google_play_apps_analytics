@@ -110,7 +110,7 @@ class FakeData {
             name = "App 11",
             company = "Azur Interactive Games Limited",
             category = "Action",
-            updatedAt = " January 25 2022".convertStringToDateObject(),
+            updatedAt = "January 25 2022".convertStringToDateObject(),
             size = "87M".convertSizeToUniqueUnit(),
             installsCount = 10000000,
             currentVersion = "0.17.1",
