@@ -154,4 +154,55 @@ internal class AnalyzerTest {
 
 
 
+    //test fun_4
+    @Test
+    fun should_ReturnPercentageOfAppsRunningOnSpecificVersion_when_VersionIsValid(){
+        //given
+        //when calculate the percentage of apps running on specific valid version
+        val result = analyzer.calculatePercentageOfAppsRunningOnSpecificVersion(fakeApps,"9 and up")
+        //then find the result
+        assertEquals(0.2, result)
+    }
+
+
+
+    //test fun_4
+    @Test
+    fun should_ReturnZero_WhenCalculatePercentageOfAppsRunningOnBlankStringVersion(){
+        //given
+        //when calculate the percentage of apps running on blank version
+        val result = analyzer.calculatePercentageOfAppsRunningOnSpecificVersion(fakeApps, "")
+        //then
+        assertEquals(0.0,result)
+    }
+
+
+
+    //test fun_4
+    @Test
+    fun should_ReturnZero_when_CalculatePercentageOfAppsRunningOnNotValidVersion(){
+        //given
+        //when calculate percentage of apps running on not valid version
+        val result = analyzer.calculatePercentageOfAppsRunningOnSpecificVersion(fakeApps, "9.0")
+        //then find the result
+        assertEquals(0.0, result)
+    }
+
+
+
+    //test fun_4
+    @Test
+    fun should_ReturnMinusOne_when_CalculatePercentageOfAppsRunningOnSpecificVersion_UsingEmptyList(){
+        //given
+        fakeApps= listOf()
+        //when calculate percentage of apps using empty list
+        val result = analyzer.calculatePercentageOfAppsRunningOnSpecificVersion(fakeApps, "9.0")
+        //then find the result
+        assertEquals(-1.0, result)
+    }
+
+
+
+
+
 }
