@@ -23,9 +23,8 @@ internal class AnalyzerTest {
 
     //test fun_1
     @Test
-    fun should_ReturnTheCountOfAppDevelopedByspecificCompany_when_CopmanyNameIsValid(){
+    fun should_ReturnTheCountOfAppsDevelopedBySpecificCompany_when_CompanyNameIsValid(){
         //given
-        fakeApps
         //when calculate the app that developed by specific company with a valid name
         val result=analyzer.countAppsDevelopedBySpecificCompany(fakeApps,"Google")
         //then find the result
@@ -34,9 +33,9 @@ internal class AnalyzerTest {
 
     //test fun_1
     @Test
-    fun should_ReturnTheCountOfAppDevelopedByspecificCompany_when_CompanyNameIsEmpity(){
+    fun should_ReturnMinusOne_when_CountAppsDevelopedByBlankStringCompanyName(){
         //given
-        //when count the app that developed by specific company with a empity company name
+        //when count the app that developed by specific company with a blank company name
         val result=analyzer.countAppsDevelopedBySpecificCompany(fakeApps,"")
         //then find the result
         assertEquals(-1,result)
@@ -44,9 +43,8 @@ internal class AnalyzerTest {
 
     //test fun_1
     @Test
-    fun should_ReturnTheCountOfAppDevelopedByspecificCompany_when_CompanyNameIsSepratedBySpace(){
+    fun should_ReturnZero_when_CountTheCompanyNameSeparatedBySpace(){
         //given
-        fakeApps
         //when count the app that developed by specific company with a space in the middle
         val result=analyzer.countAppsDevelopedBySpecificCompany(fakeApps,"Goo gle")
         //then find the result
@@ -55,20 +53,18 @@ internal class AnalyzerTest {
 
     //test fun_1
     @Test
-    fun should_ReturnTheCountOfAppDevelopedByspecificCompany_when_CompanyNameContainSpaceAtTheEnd(){
+    fun should_ReturnTheCountOfAppDevelopedBySpecificCompany_when_CompanyNameContainSpaceAtTheEnd(){
         //given
-        fakeApps
         //when count the app that developed by specific company with a space at the end
-        val result=analyzer.countAppsDevelopedBySpecificCompany(fakeApps,"Google ")
+        val result=analyzer.countAppsDevelopedBySpecificCompany(fakeApps," Google ")
         //then find the result
         assertEquals(5,result)
     }
 
     //test fun_1
     @Test
-    fun should_ReturnTheCountOfAppDevelopedByspecificCompany_when_CompanyNameNotValid(){
+    fun should_ReturnZero_when_CountAppsDevelopedBySpecificNotValidCompanyName(){
         //given
-        fakeApps
         //when count the app that developed by specific company with not valid company name
         val result=analyzer.countAppsDevelopedBySpecificCompany(fakeApps,"AliZainy")
         //then find the result
@@ -77,9 +73,8 @@ internal class AnalyzerTest {
 
     //test fun_1
     @Test
-    fun should_ReturnTheCountOfAppDevelopedByspecificCompany_when_CompanyName(){
+    fun should_ReturnZero_when_CountAppsDevelopedBySpecificUpperCaseCompanyName(){
         //given
-        fakeApps
         //when count the app that developed by specific company with upper case company name
         val result=analyzer.countAppsDevelopedBySpecificCompany(fakeApps,"GOOGLE")
         //then find the result
