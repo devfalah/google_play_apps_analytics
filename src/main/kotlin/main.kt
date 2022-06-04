@@ -1,13 +1,14 @@
 import models.App
+import utility.PATH_FILE_GOOGLE_PLAY_CSV
 
 
 fun main() {
     val readCSV = ReadCSV()
-    val file = readCSV.readCSV("assets/google_play.csv")
+    val file = readCSV.readCSV(PATH_FILE_GOOGLE_PLAY_CSV)
 
     val dataSource: DataSource = DataParser()
    print( Analyzer().largestAppDevelopedSpecificCompany(dataSource.getAllApps(file)))
-    
+
 }
 
 fun seeResultOfRequirements(apps:List<App>):String {
