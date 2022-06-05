@@ -1,13 +1,23 @@
+import interfaces.DataSource
 import models.App
+import utility.PATH_FILE_GOOGLE_PLAY_CSV
+import utility.ReadCSV
+import utility.extension.convertSizeToUniqueUnit
+import utility.extension.convertStringToDateObject
 
 
 fun main() {
-    val readCSV = ReadCSV()
-    val file = readCSV.readCSV("assets/google_play.csv")
 
-    val dataSource: DataSource = DataParser()
-   print( Analyzer().largestAppDevelopedSpecificCompany(dataSource.getAllApps(file)))
-    
+    // root init project
+    val readCSV = ReadCSV()
+    val file = readCSV.readCSV(PATH_FILE_GOOGLE_PLAY_CSV)
+    val dataSource: List<App> = DataParser().getAllApps(file)
+    val analyzer = Analyzer()
+
+    //your code here
+
+    print(analyzer.largestAppDevelopedSpecificCompany(dataSource))
+
 }
 
 fun seeResultOfRequirements(apps:List<App>):String {

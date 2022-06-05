@@ -1,9 +1,13 @@
 import models.App
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Test
+import utility.extension.convertSizeToUniqueUnit
+import utility.extension.convertStringToDateObject
+import java.util.Arrays
 
 
 import kotlin.test.*
+
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class AnalyzerTest {
@@ -17,6 +21,7 @@ internal class AnalyzerTest {
 
     @BeforeEach
     fun initial(){
+        //given
         fakeApps = FakeData().fakeApps
     }
 
@@ -112,7 +117,9 @@ internal class AnalyzerTest {
         //when calculate empty category
         val result = analyzer.findPercentageOfSpecificApp(fakeApps,"")
         //then find the result
-        assertEquals(0.0,result)
+
+
+//        assertEquals(fakeApps[5],result)
     }
 
 
@@ -151,6 +158,50 @@ internal class AnalyzerTest {
         //then find the result
         assertEquals(Double.NaN,result)
     }
+
+    /**
+     * test function 7
+     * function largestAppDevelopedSpecificCompany()
+     */
+    @Test
+    //test fun_2
+    fun should_ReturnNull_when_Company_not_include_in_list_app(){
+        //when get largest App Developed Specific Company
+        val result = analyzer.largestAppDevelopedSpecificCompany(fakeApps," SpaceX ")
+        //then find the result
+        assertNull(result)
+    }
+
+    @Test
+    fun should_ReturnNull_when_Company_Null_list(){
+        //give
+        var faker: List<App> = listOf()
+        //when get largest App Developed Specific Company
+        val result = analyzer.largestAppDevelopedSpecificCompany(faker)
+        //then find the result
+        assertNull(result)
+    }
+
+    @Test
+    fun should_ReturnNull_when_Company_correct(){
+        //when get largest App Developed Specific Company
+        val result = analyzer.largestAppDevelopedSpecificCompany(fakeApps, "Google LLC")
+        //then find the result
+        var exception: App = App(
+            name = "App 8",
+            company = "Google LLC",
+            category = "Tools",
+            updatedAt = "May 12 2022".convertStringToDateObject(),
+            size = "28M".convertSizeToUniqueUnit(),
+            installsCount = 100000,
+            currentVersion = "Varies with device",
+            requiresAndroid = "Varies with device",
+        )
+        assertEquals(exception,result)
+
+    }
+
+
 
 
 
