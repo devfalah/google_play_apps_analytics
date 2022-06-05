@@ -4,20 +4,15 @@ import kotlin.math.round
 
 class Analyzer {
 
-    // Ali
-    fun countAppsDevelopedBySpecificCompany(apps:List<App>,companyName:String): Int {
-        return if ( apps.isNotEmpty() && companyName.isNotEmpty() ){
-            apps.count { it.company.contains(companyName.trim()) }
-        }
-        else{
-            -1
-        }
 
+    fun countAppsDevelopedBySpecificCompany(apps:List<App>,companyName:String) {
+        apps.count{
+            it.company.lowercase().contains((companyName).lowercase())
+        }
     }
 
 
 
-    // Ali
     fun  findPercentageOfSpecificApp(apps: List<App>,appType:String): Double {
         val countSpecificApp = apps.count { it.category.lowercase() == appType.lowercase().trim() }
 
@@ -27,16 +22,20 @@ class Analyzer {
 
 
 
-    // Ameer
-    fun  getOldestApp(apps:List<App>): String? {
+    /**
+     * @return OldestApp in model app
+     * @param apps<App>
+     *
+     */
+    fun  getOldestApp(apps:List<App>): App? {
         return if(apps.isNotEmpty()) {
-            apps.minByOrNull { it.updatedAt }!!.name
+            apps.minByOrNull { it.updatedAt }
         } else null
     }
 
 
 
-    // ALi
+
     fun  calculatePercentageOfAppsRunningOnSpecificVersion(apps:List<App>,version:String):Double{
         var counter = 0.0
         if (apps.isEmpty()) return -1.0
@@ -48,12 +47,28 @@ class Analyzer {
         return round( counter / apps.size * 100) / 100
     }
 
+    /**
+     * function @return [App] developed by Specific Company
+     * @param company is default "Meta Platforms Inc."
+     */
+    fun largestAppDevelopedSpecificCompany(apps: List<App>, company: String = "Meta Platforms Inc." ): App? {
+        return when {
+            apps.isEmpty() -> null
+            company.isEmpty() -> null
+            else -> {
+                var companyApp: List<App> = apps.filter { it.company == company }
+                when {
+                    companyApp.isNullOrEmpty() -> null
+                    else -> getLargestApps(companyApp, 1)[0]
+                }
+            }
+        }
+    }
 
-    // Ameer
     fun  getLargestApps(apps:List<App>,n:Int):List<App> = apps.sortedByDescending { it.size }.take(n)
 
 
-    // Salah
+
     fun  getTopInstalledApps(apps: List<App>,top:Int):List<App>{
         if (apps.isEmpty()){
             return emptyList()
