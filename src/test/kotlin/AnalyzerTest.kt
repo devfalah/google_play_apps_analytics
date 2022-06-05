@@ -159,47 +159,7 @@ internal class AnalyzerTest {
         assertEquals(Double.NaN,result)
     }
 
-    /**
-     * test function 7
-     * function largestAppDevelopedSpecificCompany()
-     */
-    @Test
-    //test fun_2
-    fun should_ReturnNull_when_Company_not_include_in_list_app(){
-        //when get largest App Developed Specific Company
-        val result = analyzer.largestAppDevelopedSpecificCompany(fakeApps," SpaceX ")
-        //then find the result
-        assertNull(result)
-    }
 
-    @Test
-    fun should_ReturnNull_when_Company_Null_list(){
-        //give
-        var faker: List<App> = listOf()
-        //when get largest App Developed Specific Company
-        val result = analyzer.largestAppDevelopedSpecificCompany(faker)
-        //then find the result
-        assertNull(result)
-    }
-
-    @Test
-    fun should_ReturnNull_when_Company_correct(){
-        //when get largest App Developed Specific Company
-        val result = analyzer.largestAppDevelopedSpecificCompany(fakeApps, "Google LLC")
-        //then find the result
-        var exception: App = App(
-            name = "App 8",
-            company = "Google LLC",
-            category = "Tools",
-            updatedAt = "May 12 2022".convertStringToDateObject(),
-            size = "28M".convertSizeToUniqueUnit(),
-            installsCount = 100000,
-            currentVersion = "Varies with device",
-            requiresAndroid = "Varies with device",
-        )
-        assertEquals(exception,result)
-
-    }
 
 
 
@@ -253,7 +213,49 @@ internal class AnalyzerTest {
     }
 
 
+    /**
+     * test function 7
+     * function largestAppDevelopedSpecificCompany()
+     */
+    //test fun_5
+    @Test
+    fun should_ReturnNull_when_Company_not_include_in_list_app(){
+        //when get largest App Developed Specific Company
+        val result = analyzer.largestAppDevelopedSpecificCompany(fakeApps," SpaceX ")
+        //then find the result
+        assertNull(result)
+    }
 
+    //test fun_5
+    @Test
+    fun should_ReturnNull_when_Company_Null_list(){
+        //give
+        var faker: List<App> = listOf()
+        //when get largest App Developed Specific Company
+        val result = analyzer.largestAppDevelopedSpecificCompany(faker)
+        //then find the result
+        assertNull(result)
+    }
+
+    //test fun_5
+    @Test
+    fun should_ReturnNull_when_Company_correct(){
+        //when get largest App Developed Specific Company
+        val result = analyzer.largestAppDevelopedSpecificCompany(fakeApps, "Google LLC")
+        //then find the result
+        var exception: App = App(
+            name = "App 8",
+            company = "Google LLC",
+            category = "Tools",
+            updatedAt = "May 12 2022".convertStringToDateObject(),
+            size = "28M".convertSizeToUniqueUnit(),
+            installsCount = 100000,
+            currentVersion = "Varies with device",
+            requiresAndroid = "Varies with device",
+        )
+        assertEquals(exception,result)
+
+    }
 
 
 }
