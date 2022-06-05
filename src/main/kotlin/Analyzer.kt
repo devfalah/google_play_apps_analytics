@@ -1,9 +1,7 @@
 import models.App
 import kotlin.math.round
 
-
 class Analyzer {
-
 
     fun countAppsDevelopedBySpecificCompany(apps:List<App>,companyName:String): Int {
         return if ( apps.isNotEmpty() && companyName.isNotEmpty() ){
@@ -12,10 +10,7 @@ class Analyzer {
         else{
             -1
         }
-
     }
-
-
 
     fun  findPercentageOfSpecificApp(apps: List<App>,appType:String): Double {
         val countSpecificApp = apps.count { it.category.lowercase() == appType.lowercase().trim() }
@@ -23,8 +18,6 @@ class Analyzer {
         return if ( apps.isEmpty() && appType.isEmpty() ) -1.0
                else round( countSpecificApp.toDouble() / apps.size * 100)
     }
-
-
 
     /**
      * @return OldestApp in model app
@@ -36,9 +29,6 @@ class Analyzer {
             apps.minByOrNull { it.updatedAt }
         } else null
     }
-
-
-
 
     fun  calculatePercentageOfAppsRunningOnSpecificVersion(apps:List<App>,version:String):Double{
         var counter = 0.0
@@ -71,15 +61,11 @@ class Analyzer {
 
     fun  getLargestApps(apps:List<App>,n:Int):List<App> = apps.sortedByDescending { it.size }.take(n)
 
-
-
     fun  getTopInstalledApps(apps: List<App>,top:Int):List<App>{
         if (apps.isEmpty() || apps.all { it.installsCount < 0 } || top <=0){
             return emptyList()
         }
         return apps.sortedByDescending { it.installsCount}.take(top)
-
     }
-
 
 }

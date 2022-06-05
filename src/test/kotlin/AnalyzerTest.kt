@@ -22,8 +22,7 @@ internal class AnalyzerTest {
 
 
     /**
-     * test function 1
-     * function countAppsDevelopedBySpecificCompany()
+     * test function countAppsDevelopedBySpecificCompany()
      */
     @Test
     fun should_ReturnTheCountOfAppsDevelopedBySpecificCompany_when_CompanyNameIsValid(){
@@ -80,8 +79,7 @@ internal class AnalyzerTest {
     }
 
     /**
-     * test function 1
-     * function findPercentageOfSpecificApp()
+     * test function findPercentageOfSpecificApp()
      */
     @Test
     fun should_ReturnPercentageAppsOfSpecificCategory_when_CategoryNameIsValid(){
@@ -91,58 +89,37 @@ internal class AnalyzerTest {
         //then find the result
         assertEquals(25.0,result)
     }
-
-
-
-    //test fun_2
     @Test
     fun should_ReturnZero_when_calculateThePercentageOfNotValidCategoryName(){
-        //given
         // when calculate the percentage of Not valid category name
         val result = analyzer.findPercentageOfSpecificApp(fakeApps,"AliZainy")
         //then find the result
         assertEquals(0.0,result)
     }
 
-
-
-    //test fun_2
     @Test
     fun should_ReturnZero_when_CategoryIsBlankString(){
-        //given
         //when calculate empty category
         val result = analyzer.findPercentageOfSpecificApp(fakeApps,"")
         //then find the result
         assertEquals(0.0,result)
     }
 
-
-
-    //test fun_2
     @Test
     fun should_ReturnPercentageAppsOfSpecificCategory_when_CategoryIsUpperOrLowerCase(){
-        //given
         //when calculate the percentage of category name with upper or lower case
         val result = analyzer.findPercentageOfSpecificApp(fakeApps,"MEDICAL")
         //then find the result
         assertEquals(25.0,result)
     }
 
-
-
-    //test fun_2
     @Test
     fun should_ReturnPercentageAppsOfSpecificCategory_when_CategoryNameWithSpaces(){
-        //given
         //when calculate the percentage of category name with spaces
         val result = analyzer.findPercentageOfSpecificApp(fakeApps," Medical ")
         //then find the result
         assertEquals(25.0,result)
     }
-
-
-
-    //test fun_2
     @Test
     fun should_ReturnNan_when_ListOfFakeAppsIsEmpty(){
         //given
@@ -153,12 +130,9 @@ internal class AnalyzerTest {
         assertEquals(Double.NaN,result)
     }
 
-
     /**
-     * test function 3
-     * function getOldestApp()
+     * test  function getOldestApp()
      */
-    //test fun_3
     @Test
     fun should_ReturnNull_when_list_isEmpty(){
         //give set fakeApps is empty
@@ -168,8 +142,6 @@ internal class AnalyzerTest {
         //then find the result
         assertNull(result)
     }
-
-    //test fun_3
     @Test
     fun should_ReturnApp_when_list_isNotEmpty(){
         //when list not empty Oldest App
@@ -177,8 +149,6 @@ internal class AnalyzerTest {
         //then find the result
         assertNotNull(result)
     }
-
-    //test fun_3
     @Test
     fun should_ReturnApp_when_list_isCorrect(){
 
@@ -200,48 +170,34 @@ internal class AnalyzerTest {
 
 
 
-
-
-    //test fun_4
+    /**
+     * test function calculatePercentageOfAppsRunningOnSpecificVersion()
+     */
     @Test
     fun should_ReturnPercentageOfAppsRunningOnSpecificVersion_when_VersionIsValid(){
-        //given
         //when calculate the percentage of apps running on specific valid version
         val result = analyzer.calculatePercentageOfAppsRunningOnSpecificVersion(fakeApps,"9 and up")
         //then find the result
         assertEquals(0.2, result)
     }
-
-
-
-    //test fun_4
     @Test
     fun should_ReturnZero_WhenCalculatePercentageOfAppsRunningOnBlankStringVersion(){
-        //given
         //when calculate the percentage of apps running on blank version
         val result = analyzer.calculatePercentageOfAppsRunningOnSpecificVersion(fakeApps, "")
         //then
         assertEquals(0.0,result)
     }
-
-
-
-    //test fun_4
     @Test
     fun should_ReturnZero_when_CalculatePercentageOfAppsRunningOnNotValidVersion(){
-        //given
         //when calculate percentage of apps running on not valid version
         val result = analyzer.calculatePercentageOfAppsRunningOnSpecificVersion(fakeApps, "9.0")
         //then find the result
         assertEquals(0.0, result)
     }
 
-
-
-    //test fun_4
     @Test
     fun should_ReturnMinusOne_when_CalculatePercentageOfAppsRunningOnSpecificVersion_UsingEmptyList(){
-        //given
+
         fakeApps= listOf()
         //when calculate percentage of apps using empty list
         val result = analyzer.calculatePercentageOfAppsRunningOnSpecificVersion(fakeApps, "9.0")
@@ -249,53 +205,10 @@ internal class AnalyzerTest {
         assertEquals(-1.0, result)
     }
 
-
-
     /**
-     * test function 7
-     * function largestAppDevelopedSpecificCompany()
+     *
+     * test function getTopInstalledApps()
      */
-    //test fun_5
-    @Test
-    fun should_ReturnNull_when_Company_not_include_in_list_app(){
-        //when get largest App Developed Specific Company
-        val result = analyzer.largestAppDevelopedSpecificCompany(fakeApps," SpaceX ")
-        //then find the result
-        assertNull(result)
-    }
-
-    //test fun_5
-    @Test
-    fun should_ReturnNull_when_Company_Null_list(){
-        //give
-        var faker: List<App> = listOf()
-        //when get largest App Developed Specific Company
-        val result = analyzer.largestAppDevelopedSpecificCompany(faker)
-        //then find the result
-        assertNull(result)
-    }
-
-    //test fun_5
-    @Test
-    fun should_ReturnNull_when_Company_correct(){
-        //when get largest App Developed Specific Company
-        val result = analyzer.largestAppDevelopedSpecificCompany(fakeApps, "Google LLC")
-        //then find the result
-        var exception: App = App(
-            name = "App 8",
-            company = "Google LLC",
-            category = "Tools",
-            updatedAt = "May 12 2022".convertStringToDateObject(),
-            size = "28M".convertSizeToUniqueUnit(),
-            installsCount = 100000,
-            currentVersion = "Varies with device",
-            requiresAndroid = "Varies with device",
-        )
-        assertEquals(exception,result)
-
-    }
-
-    //test fun_6
     @Test
     fun should_ReturnTopAppInstall_When_ItHasValidData() {
         //given fake data from our class FakeData as list call fakeApps
@@ -334,12 +247,9 @@ internal class AnalyzerTest {
                 currentVersion = "30.0.271",
                 requiresAndroid = "5.0 and up",
             )
-
         )
         assertEquals(topThreeApps, result)
     }
-
-    //test fun_6
     @Test
     fun should22_ReturnTopAppInstall_When_ItHasLessDataThanRequired() {
         //given valid list of data consisting of three objects
@@ -410,11 +320,9 @@ internal class AnalyzerTest {
                 requiresAndroid = "5.0 and up",
             )
         )
-
         assertEquals(topThreeApps, result)
     }
 
-    //test fun_6
     @Test
     fun should_ReturnEmptyList_When_TheListIsEmpty() {
         //liven empty list
@@ -424,8 +332,6 @@ internal class AnalyzerTest {
         //then should return empty list
         assertEquals(listOf(), result)
     }
-
-    //test fun_6
     @Test
     fun should_ReturnEmptyList_When_TheEnterNumberOfAppsIsZero() {
         //given fake data from our class FakeData as list call fakeApps
@@ -435,8 +341,6 @@ internal class AnalyzerTest {
         //then should return empty list
         assertEquals(listOf(), result)
     }
-
-    //test fun_6
     @Test
     fun should_ReturnEmptyList_When_AppsNumberIsNegative() {
         //given fake data from our class FakeData as list call fakeApps
@@ -445,6 +349,45 @@ internal class AnalyzerTest {
         val result = analyzer.getTopInstalledApps(apps = appList, top =  -1)
         //then should return empty list
         assertEquals(listOf(), result)
+    }
+
+    /**
+     * test function largestAppDevelopedSpecificCompany()
+     */
+    //test fun_5
+    @Test
+    fun should_ReturnNull_when_Company_not_include_in_list_app(){
+        //when get largest App Developed Specific Company
+        val result = analyzer.largestAppDevelopedSpecificCompany(fakeApps," SpaceX ")
+        //then find the result
+        assertNull(result)
+    }
+
+    @Test
+    fun should_ReturnNull_when_Company_correct(){
+        //when get largest App Developed Specific Company
+        val result = analyzer.largestAppDevelopedSpecificCompany(fakeApps, "Google LLC")
+        //then find the result
+        var exception: App = App(
+            name = "App 8",
+            company = "Google LLC",
+            category = "Tools",
+            updatedAt = "May 12 2022".convertStringToDateObject(),
+            size = "28M".convertSizeToUniqueUnit(),
+            installsCount = 100000,
+            currentVersion = "Varies with device",
+            requiresAndroid = "Varies with device",
+        )
+        assertEquals(exception,result)
+    }
+    @Test
+    fun should_ReturnNull_when_Company_Null_list(){
+        //give
+        var faker: List<App> = listOf()
+        //when get largest App Developed Specific Company
+        val result = analyzer.largestAppDevelopedSpecificCompany(faker)
+        //then find the result
+        assertNull(result)
     }
 
 }

@@ -27,7 +27,6 @@ class DataParser(): DataSource {
                     requiresAndroid = appData[SetIndex.REQUIRES_ANDROID],
                 )
             )
-
         }
         return  googlePlayApps
     }
