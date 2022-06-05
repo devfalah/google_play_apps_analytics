@@ -1,13 +1,20 @@
+import interfaces.DataSource
 import models.App
 import utility.PATH_FILE_GOOGLE_PLAY_CSV
+import utility.ReadCSV
 
 
 fun main() {
+
+    // root init project
     val readCSV = ReadCSV()
     val file = readCSV.readCSV(PATH_FILE_GOOGLE_PLAY_CSV)
+    val dataSource: List<App> = DataParser().getAllApps(file)
+    val analyzer = Analyzer()
 
-    val dataSource: DataSource = DataParser()
-   print( Analyzer().largestAppDevelopedSpecificCompany(dataSource.getAllApps(file)))
+    //your code here
+
+//   print( Analyzer().largestAppDevelopedSpecificCompany(dataSource.getAllApps(file)))
 
 }
 
