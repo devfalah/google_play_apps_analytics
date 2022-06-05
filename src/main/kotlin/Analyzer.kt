@@ -74,11 +74,7 @@ class Analyzer {
 
 
     fun  getTopInstalledApps(apps: List<App>,top:Int):List<App>{
-        if (apps.isEmpty()){
-            return emptyList()
-        }
-
-        if(apps.all { it.installsCount < 0 })  {
+        if (apps.isEmpty() || apps.all { it.installsCount < 0 } || top <=0){
             return emptyList()
         }
         return apps.sortedByDescending { it.installsCount}.take(top)
