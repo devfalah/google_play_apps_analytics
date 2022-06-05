@@ -5,8 +5,8 @@ import kotlin.math.round
 class Analyzer {
 
 
-    fun countAppsDevelopedBySpecificCompany(apps:List<App>,companyName:String) {
-        apps.count{
+    fun countAppsDevelopedBySpecificCompany(apps:List<App>,companyName:String) :Int{
+       return apps.count{
             it.company.lowercase().contains((companyName).lowercase())
         }
     }
