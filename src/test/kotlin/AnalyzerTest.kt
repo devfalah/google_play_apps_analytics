@@ -160,6 +160,49 @@ internal class AnalyzerTest {
     }
 
 
+    /**
+     * test function 3
+     * function getOldestApp()
+     */
+    //test fun_3
+    @Test
+    fun should_ReturnNull_when_list_isEmpty(){
+        //give set fakeApps is empty
+        fakeApps= listOf()
+        //when Oldest App
+        val result = analyzer.getOldestApp(fakeApps)
+        //then find the result
+        assertNull(result)
+    }
+
+    //test fun_3
+    @Test
+    fun should_ReturnApp_when_list_isNotEmpty(){
+        //when list not empty Oldest App
+        val result = analyzer.getOldestApp(fakeApps)
+        //then find the result
+        assertNotNull(result)
+    }
+
+    //test fun_3
+    @Test
+    fun should_ReturnApp_when_list_isCorrect(){
+
+        //when list oldest App correct
+        val result = analyzer.getOldestApp(fakeApps)
+        //then find the result
+        var exception: App = App(
+            name = "App 2",
+            company = "Google LLC",
+            category = "Medical",
+            updatedAt = "September 26 2017".convertStringToDateObject(),
+            size = "22M".convertSizeToUniqueUnit(),
+            installsCount = 100000,
+            currentVersion = "1.4.4-0e73d19a",
+            requiresAndroid = "7.0 and up",
+        )
+        assertEquals(exception,result)
+    }
 
 
 
@@ -213,46 +256,6 @@ internal class AnalyzerTest {
     }
 
 
-    /**
-     * test function 3
-     * function getOldestApp()
-     */
-    @Test
-    fun should_ReturnNull_when_list_isEmpty(){
-        //give set fakeApps is empty
-        fakeApps= listOf()
-        //when Oldest App
-        val result = analyzer.getOldestApp(fakeApps)
-        //then find the result
-        assertNull(result)
-    }
-
-    @Test
-    fun should_ReturnApp_when_list_isNotEmpty(){
-        //when list not empty Oldest App
-        val result = analyzer.getOldestApp(fakeApps)
-        //then find the result
-        assertNotNull(result)
-    }
-
-    @Test
-    fun should_ReturnApp_when_list_isCorrect(){
-
-        //when list oldest App correct
-        val result = analyzer.getOldestApp(fakeApps)
-        //then find the result
-        var exception: App = App(
-            name = "App 2",
-            company = "Google LLC",
-            category = "Medical",
-            updatedAt = "September 26 2017".convertStringToDateObject(),
-            size = "22M".convertSizeToUniqueUnit(),
-            installsCount = 100000,
-            currentVersion = "1.4.4-0e73d19a",
-            requiresAndroid = "7.0 and up",
-        )
-        assertEquals(exception,result)
-    }
 
     /**
      * test function 7
