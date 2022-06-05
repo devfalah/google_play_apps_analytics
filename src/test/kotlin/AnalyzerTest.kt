@@ -3,8 +3,6 @@ import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Test
 import utility.extension.convertSizeToUniqueUnit
 import utility.extension.convertStringToDateObject
-
-
 import kotlin.test.*
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -23,7 +21,10 @@ internal class AnalyzerTest {
     }
 
 
-    //test fun_1
+    /**
+     * test function 1
+     * function countAppsDevelopedBySpecificCompany()
+     */
     @Test
     fun should_ReturnTheCountOfAppsDevelopedBySpecificCompany_when_CompanyNameIsValid(){
         //given
@@ -33,7 +34,6 @@ internal class AnalyzerTest {
         assertEquals(5,result)
     }
 
-    //test fun_1
     @Test
     fun should_ReturnMinusOne_when_CountAppsDevelopedByBlankStringCompanyName(){
         //given
@@ -43,7 +43,6 @@ internal class AnalyzerTest {
         assertEquals(-1,result)
     }
 
-    //test fun_1
     @Test
     fun should_ReturnZero_when_CountTheCompanyNameSeparatedBySpace(){
         //given
@@ -53,7 +52,6 @@ internal class AnalyzerTest {
         assertEquals(0,result)
     }
 
-    //test fun_1
     @Test
     fun should_ReturnTheCountOfAppDevelopedBySpecificCompany_when_CompanyNameContainSpaceAtTheEnd(){
         //given
@@ -63,7 +61,6 @@ internal class AnalyzerTest {
         assertEquals(5,result)
     }
 
-    //test fun_1
     @Test
     fun should_ReturnZero_when_CountAppsDevelopedBySpecificNotValidCompanyName(){
         //given
@@ -73,7 +70,6 @@ internal class AnalyzerTest {
         assertEquals(0,result)
     }
 
-    //test fun_1
     @Test
     fun should_ReturnZero_when_CountAppsDevelopedBySpecificUpperCaseCompanyName(){
         //given
@@ -83,7 +79,10 @@ internal class AnalyzerTest {
         assertEquals(0,result)
     }
 
-    //test fun_2
+    /**
+     * test function 1
+     * function findPercentageOfSpecificApp()
+     */
     @Test
     fun should_ReturnPercentageAppsOfSpecificCategory_when_CategoryNameIsValid(){
         //given

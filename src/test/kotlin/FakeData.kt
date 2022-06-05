@@ -2,8 +2,8 @@ import models.App
 import utility.extension.convertSizeToUniqueUnit
 import utility.extension.convertStringToDateObject
 
-
 class FakeData {
+
     val fakeApps= listOf(
         App(
             name = "App 1",
